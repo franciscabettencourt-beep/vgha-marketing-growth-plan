@@ -46,56 +46,51 @@ body{font-family:var(--fb);background:var(--W);color:var(--T);line-height:1.65;o
 /* ─── NAV ────────────────────────────────────────────────────────────── */
 #nav{
   position:fixed;top:0;left:0;right:0;z-index:500;
-  height:62px;
+  height:58px;
   display:flex;align-items:center;justify-content:space-between;
   padding:0 52px;
-  background:rgba(252,251,248,.0);
-  backdrop-filter:blur(0px) saturate(1);
-  border-bottom:1px solid transparent;
+  background:rgba(44,33,12,.96);
+  backdrop-filter:blur(20px) saturate(1.4);
+  border-bottom:1px solid rgba(92,74,40,.22);
   transform:translateY(-100%);
   animation:slideDown .45s var(--ez) 2s forwards;
-  transition:background .4s var(--ez),backdrop-filter .4s,border-color .4s,height .35s var(--ez),box-shadow .4s
+  transition:background .35s var(--ez),box-shadow .35s,height .3s var(--ez)
 }
 #nav.solid{
-  background:rgba(252,251,248,.96);
-  backdrop-filter:blur(24px) saturate(1.8);
-  border-bottom-color:rgba(69,53,25,.1);
-  height:54px;
-  box-shadow:0 1px 32px rgba(69,53,25,.06)
+  background:rgba(30,22,8,.98);
+  border-bottom-color:rgba(92,74,40,.32);
+  height:52px;
+  box-shadow:0 2px 40px rgba(0,0,0,.18)
 }
 @keyframes slideDown{to{transform:translateY(0)}}
-/* When nav is transparent (over dark hero) — lighten text */
-#nav:not(.solid) .nbrand{color:rgba(227,222,207,.88)}
-#nav:not(.solid) .nbt{color:rgba(227,222,207,.36)}
-#nav:not(.solid) .nbt:hover{color:rgba(227,222,207,.82)}
-#nav:not(.solid) .nbt.on{color:var(--H);border-bottom-color:rgba(227,222,207,.5)}
-#nav:not(.solid) .ham span{background:rgba(227,222,207,.8)}
-#nav:not(.solid) .nyr{color:rgba(227,222,207,.26)}
+
 
 .nbrand{
   font-family:var(--ff);font-size:13px;font-weight:400;
-  letter-spacing:.22em;text-transform:uppercase;color:var(--T3);
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--H);
   white-space:nowrap;flex-shrink:0;cursor:pointer;
-  transition:color .3s
+  transition:opacity .2s
 }
-.nbrand span{color:var(--T2);font-style:italic;font-family:var(--fi)}
-#nav.solid .nbrand{color:var(--T3)}
+.nbrand:hover{opacity:.8}
+.nbrand span{color:var(--H2);font-style:italic;font-family:var(--fi)}
 
 /* Desktop links */
 .nlinks{display:flex;gap:0;overflow:hidden}
 .nbt{
   padding:5px 10px;font-size:9px;font-weight:400;letter-spacing:.16em;
-  text-transform:uppercase;color:rgba(69,53,25,.38);
+  text-transform:uppercase;
+  color:rgba(227,222,207,.48);
   border:none;background:none;cursor:pointer;
   border-bottom:2px solid transparent;
   transition:color .18s;white-space:nowrap
 }
-.nbt:hover{color:rgba(69,53,25,.8)}
-.nbt.on{color:var(--T);border-bottom-color:var(--T2);font-weight:500}
+.nbt:hover{color:rgba(227,222,207,.88)}
+.nbt.on{color:var(--H);border-bottom-color:var(--H2);font-weight:500}
 
 /* Hamburger */
 .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
-.ham span{width:22px;height:1.5px;background:var(--T3);border-radius:1px;transition:all .25s var(--ez);display:block}
+.ham span{width:22px;height:1.5px;background:rgba(227,222,207,.75);border-radius:1px;transition:all .25s var(--ez);display:block}
 .ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
@@ -123,7 +118,7 @@ body{font-family:var(--fb);background:var(--W);color:var(--T);line-height:1.65;o
 .dbt.on{color:var(--T);font-weight:500}
 
 /* Nyr */
-.nyr{font-size:8.5px;font-weight:300;letter-spacing:.18em;color:rgba(69,53,25,.32);white-space:nowrap;flex-shrink:0}
+.nyr{font-size:8.5px;font-weight:300;letter-spacing:.18em;color:rgba(227,222,207,.3);white-space:nowrap;flex-shrink:0}
 
 /* ─── APP ─────────────────────────────────────────────────────────────── */
 #app{padding-top:62px}
