@@ -46,56 +46,67 @@ body{font-family:var(--fb);background:var(--W);color:var(--T);line-height:1.65;o
 /* ─── NAV ────────────────────────────────────────────────────────────── */
 #nav{
   position:fixed;top:0;left:0;right:0;z-index:500;
-  height:58px;
+  height:62px;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 48px;
-  background:rgba(28,21,8,.0);
-  backdrop-filter:blur(0px);
+  padding:0 52px;
+  background:rgba(252,251,248,.0);
+  backdrop-filter:blur(0px) saturate(1);
   border-bottom:1px solid transparent;
   transform:translateY(-100%);
   animation:slideDown .45s var(--ez) 2s forwards;
-  transition:background .35s,backdrop-filter .35s,border-color .35s,height .3s
+  transition:background .4s var(--ez),backdrop-filter .4s,border-color .4s,height .35s var(--ez),box-shadow .4s
 }
 #nav.solid{
-  background:rgba(28,21,8,.97);
-  backdrop-filter:blur(22px);
-  border-bottom-color:rgba(92,74,40,.28);
-  height:52px
+  background:rgba(252,251,248,.96);
+  backdrop-filter:blur(24px) saturate(1.8);
+  border-bottom-color:rgba(69,53,25,.1);
+  height:54px;
+  box-shadow:0 1px 32px rgba(69,53,25,.06)
 }
 @keyframes slideDown{to{transform:translateY(0)}}
+/* When nav is transparent (over dark hero) — lighten text */
+#nav:not(.solid) .nbrand{color:rgba(227,222,207,.88)}
+#nav:not(.solid) .nbt{color:rgba(227,222,207,.36)}
+#nav:not(.solid) .nbt:hover{color:rgba(227,222,207,.82)}
+#nav:not(.solid) .nbt.on{color:var(--H);border-bottom-color:rgba(227,222,207,.5)}
+#nav:not(.solid) .ham span{background:rgba(227,222,207,.8)}
+#nav:not(.solid) .nyr{color:rgba(227,222,207,.26)}
 
 .nbrand{
   font-family:var(--ff);font-size:13px;font-weight:400;
-  letter-spacing:.22em;text-transform:uppercase;color:var(--H);
-  white-space:nowrap;flex-shrink:0;cursor:pointer
+  letter-spacing:.22em;text-transform:uppercase;color:var(--T3);
+  white-space:nowrap;flex-shrink:0;cursor:pointer;
+  transition:color .3s
 }
-.nbrand span{color:var(--H2);font-style:italic;font-family:var(--fi)}
+.nbrand span{color:var(--T2);font-style:italic;font-family:var(--fi)}
+#nav.solid .nbrand{color:var(--T3)}
 
 /* Desktop links */
 .nlinks{display:flex;gap:0;overflow:hidden}
 .nbt{
   padding:5px 10px;font-size:9px;font-weight:400;letter-spacing:.16em;
-  text-transform:uppercase;color:rgba(227,222,207,.38);
+  text-transform:uppercase;color:rgba(69,53,25,.38);
   border:none;background:none;cursor:pointer;
   border-bottom:2px solid transparent;
-  transition:color .15s;white-space:nowrap
+  transition:color .18s;white-space:nowrap
 }
-.nbt:hover{color:rgba(227,222,207,.78)}
-.nbt.on{color:var(--H);border-bottom-color:var(--H2);font-weight:500}
+.nbt:hover{color:rgba(69,53,25,.8)}
+.nbt.on{color:var(--T);border-bottom-color:var(--T2);font-weight:500}
 
 /* Hamburger */
 .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
-.ham span{width:22px;height:1.5px;background:var(--H);border-radius:1px;transition:all .25s var(--ez);display:block}
+.ham span{width:22px;height:1.5px;background:var(--T3);border-radius:1px;transition:all .25s var(--ez);display:block}
 .ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
 /* Mobile drawer */
 #drawer{
-  position:fixed;top:52px;left:0;right:0;z-index:499;
-  background:rgba(28,21,8,.98);
-  backdrop-filter:blur(24px);
-  border-bottom:1px solid rgba(92,74,40,.3);
+  position:fixed;top:54px;left:0;right:0;z-index:499;
+  background:rgba(252,251,248,.98);
+  backdrop-filter:blur(28px) saturate(1.8);
+  border-bottom:1px solid rgba(69,53,25,.1);
+  box-shadow:0 8px 32px rgba(69,53,25,.08);
   padding:0;max-height:0;overflow:hidden;
   transition:max-height .35s var(--ez),padding .35s
 }
@@ -104,17 +115,18 @@ body{font-family:var(--fb);background:var(--W);color:var(--T);line-height:1.65;o
   display:block;width:100%;text-align:left;
   padding:11px 28px;font-size:10px;font-weight:400;
   letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(227,222,207,.45);background:none;border:none;cursor:pointer;
-  transition:color .15s
+  color:rgba(69,53,25,.38);background:none;border:none;cursor:pointer;
+  transition:color .15s;border-bottom:1px solid rgba(69,53,25,.05)
 }
-.dbt:hover{color:var(--H)}
-.dbt.on{color:var(--H);font-weight:500}
+.dbt:last-child{border-bottom:none}
+.dbt:hover{color:var(--T2)}
+.dbt.on{color:var(--T);font-weight:500}
 
 /* Nyr */
-.nyr{font-size:8.5px;font-weight:300;letter-spacing:.18em;color:rgba(227,222,207,.28);white-space:nowrap;flex-shrink:0}
+.nyr{font-size:8.5px;font-weight:300;letter-spacing:.18em;color:rgba(69,53,25,.32);white-space:nowrap;flex-shrink:0}
 
 /* ─── APP ─────────────────────────────────────────────────────────────── */
-#app{padding-top:58px}
+#app{padding-top:62px}
 .pg{display:none;animation:pi .32s var(--ez)}.pg.on{display:block}
 @keyframes pi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
@@ -780,12 +792,85 @@ hr.dk{border:none;border-top:1px solid rgba(255,255,255,.07);margin:24px 0}
   <hr class="dk">
   <div class="sl">Os 6 Outlets — comunicação e revenue</div>
   <div class="og" style="margin-top:12px">
-    <div class="oc"><div class="os" style="background:var(--T2)"></div><div class="ob"><div class="on2">Coral</div><div class="osub">Éden do Mar</div><div class="od">Fine dining mediterrânico. Vista directa para o Atlântico. Espaço de celebrações e Chronicle Dinners.</div><div class="oac"><div class="oa">Chef's Table: €150–200/pessoa · waitlist como mecanismo de desejo</div><div class="oa">Chronicle Dinners com transmissão editorial e waitlist pública</div><div class="oa">60 Years Menu 2026: 6 pratos, 6 décadas — irrepetível</div></div></div></div>
-    <div class="oc"><div class="os" style="background:#2A6A4A"></div><div class="ob"><div class="on2">Raízes</div><div class="osub">Horta da Terra</div><div class="od">Farm-to-table verificável. Ingredientes da horta pedagógica. Cada prato com origem documentada.</div><div class="oac"><div class="oa">Tour da horta → almoço: experiência €45/pessoa comunicada no T−7</div><div class="oa">Cartão de storytelling por prato: origem, produtor, distância</div><div class="oa">SEO: "restaurante farm-to-table algarve" · blog mensal</div></div></div></div>
-    <div class="oc"><div class="os" style="background:#2A5A8A"></div><div class="ob"><div class="on2">Gaivotas</div><div class="osub">A Falésia</div><div class="od">A vista mais dramática. Destino externo: "o restaurante na falésia". Captação de não-hóspedes.</div><div class="oac"><div class="oa">Google Ads local €800/mês: "restaurante falésia algarve"</div><div class="oa">Meta Ads regional: Portimão, Lagos, Faro, Albufeira</div><div class="oa">Reserva obrigatória: cria escassez e urgência</div></div></div></div>
-    <div class="oc"><div class="os" style="background:#8A5A20"></div><div class="ob"><div class="on2">A-Costa</div><div class="osub">Mar &amp; Território</div><div class="od">Casual premium. Ideal para almoços e refeições informais de alta qualidade.</div><div class="oac"><div class="oa">Comunicar no T−7 como opção para almoços informais premium</div><div class="oa">Happy Hour hóspedes: 17h–19h · snacks locais</div></div></div></div>
-    <div class="oc"><div class="os" style="background:#3A6A8A"></div><div class="ob"><div class="on2">Vento</div><div class="osub">Bar &amp; Vista</div><div class="od">Bar com vista para o oceano. Sunset Cocktail Ritual diário. Gerador de conteúdo orgânico.</div><div class="oac"><div class="oa">Sunset Cocktail Ritual: 19h30 · gratuito · conteúdo orgânico diário</div><div class="oa">Cocktail Masterclass €45/pessoa · máx 8 · €1.440/semana</div><div class="oa">Label "Vento — Vilalara Spirits": produto de retail</div></div></div></div>
-    <div class="oc"><div class="os" style="background:#8A2A20"></div><div class="ob"><div class="on2">Trattoria Pantaleone</div><div class="osub">Itália no Algarve</div><div class="od">Itália com personalidade própria. Chronicle Dinners Ricardo × Stefano Bulla em 7 Setembro.</div><div class="oac"><div class="oa">Noite Italiana Mensal: menu especial €65–85 · reserva antecipada</div><div class="oa">Chronicle Dinners Set 7 — comunicar com 60 dias antecedência</div><div class="oa">Pasta making experience: 90min + almoço · €55/pessoa</div></div></div></div>
+
+    <!-- CORAL -->
+    <div class="oc"><div class="os" style="background:#4A3A20"></div><div class="ob">
+      <div class="on2">Coral</div>
+      <div class="osub" style="font-family:var(--fi);font-style:italic">Refined Atlantic Cuisine · Michelin Guide 2026</div>
+      <div class="od">Reconhecido no Guia Michelin Portugal 2026. A simplicidade do sublime — precisão, elegância e refinamento. Qui e sáb, apenas às sextas, sábados e domingos à noite. Vista oceano.</div>
+      <div class="oac">
+        <div class="oa">Qui–Sáb 19h–22h30 · Resort Chic · reserva obrigatória</div>
+        <div class="oa">Chronicle Dinners: transmissão editorial + waitlist pública — gera room nights no fim de semana</div>
+        <div class="oa">Comunicar no T−7 como experiência de fine dining exclusiva com disponibilidade limitada</div>
+        <div class="oa">Argumento de PR: única menção Michelin do hotel — usar em todas as press releases</div>
+      </div>
+    </div></div>
+
+    <!-- RAÍZES -->
+    <div class="oc"><div class="os" style="background:#2A5A30"></div><div class="ob">
+      <div class="on2">Raízes</div>
+      <div class="osub" style="font-family:var(--fi);font-style:italic">Horta da Terra · Fogo e Mesa Partilhada</div>
+      <div class="od">Três pilares: produto local de excelência, cozinha no fogo e mesa partilhada. Cordeiro assado 24h em forno a lenha. Apenas jantares. Seg–Sex, 19h30–22h30.</div>
+      <div class="oac">
+        <div class="oa">Seg–Sex 19h30–22h30 · só jantares · fogo e brasa como conceito central</div>
+        <div class="oa">Tour da horta orgânica → jantar no Raízes: experiência narrativa única no Algarve</div>
+        <div class="oa">SEO: "restaurante fogo algarve", "fine dining algarve local" · blog mensal com ingrediente sazonal</div>
+        <div class="oa">Chronicle Dinners Set 5: Telmo × Alexandre Silva — comunicar com 60 dias antecedência</div>
+      </div>
+    </div></div>
+
+    <!-- GAIVOTAS -->
+    <div class="oc"><div class="os" style="background:#2A5A7A"></div><div class="ob">
+      <div class="on2">Gaivotas</div>
+      <div class="osub" style="font-family:var(--fi);font-style:italic">Cozinha Portuguesa Essencial</div>
+      <div class="od">Peixe de mercado, arroz, caldos de construção lenta. Espírito de tasca refinada — generoso, quente e simples. Dom–Qua à noite. Vista oceano.</div>
+      <div class="oac">
+        <div class="oa">Dom–Qua 19h–22h30 · Resort Chic · vista oceano</div>
+        <div class="oa">60 Years on the Cliffs (23 Mai): jantar dos anos 60 com Lara (neta do fundador) — PR único</div>
+        <div class="oa">Google Ads local €600/mês: "restaurante vista mar algarve" + Meta regional</div>
+        <div class="oa">Reserva obrigatória online: cria escassez e urgência de booking</div>
+      </div>
+    </div></div>
+
+    <!-- A-COSTA -->
+    <div class="oc"><div class="os" style="background:#7A5A30"></div><div class="ob">
+      <div class="on2">A-Costa</div>
+      <div class="osub" style="font-family:var(--fi);font-style:italic">Clássicos Portugueses · Frente ao Mar</div>
+      <div class="od">Os grandes clássicos portugueses a qualquer hora. A melhor razão para revisitar. Bar, almoço e jantar diários. Localização na frente marítima, vista oceano.</div>
+      <div class="oac">
+        <div class="oa">Diário: Bar 10h30–23h · Almoço 12h30–18h · Jantar 18h–22h30</div>
+        <div class="oa">O outlet de maior janela horária — principal alavanca de ancillary revenue diário</div>
+        <div class="oa">Comunicar no T−7 como o destino de almoço e snack com vista oceano</div>
+        <div class="oa">Happy Hour hóspedes: 17h–19h · petiscos portugueses sazonais</div>
+      </div>
+    </div></div>
+
+    <!-- VENTO -->
+    <div class="oc"><div class="os" style="background:#3A6A50"></div><div class="ob">
+      <div class="on2">Vento</div>
+      <div class="osub" style="font-family:var(--fi);font-style:italic">Mediterrânico Orgânico · Junto às Piscinas</div>
+      <div class="od">Cozinha mediterrânica leve e saudável junto às Cascades Pool e ao Spa. Ingredientes locais e sustentáveis. Almoço diário 12h–17h. Ambiente resort, sem vista mar.</div>
+      <div class="oac">
+        <div class="oa">Diário 10h30–18h (bar) · Almoço 12h–17h · Resort Chic</div>
+        <div class="oa">Posicionado como o outlet de wellness: ligação natural ao Spa e ao programa Thalasso</div>
+        <div class="oa">Incluir no T−7 como opção de almoço leve pós-tratamento Spa</div>
+        <div class="oa">Menu de sumos, bowls e opções plant-based como argumento de SEO wellness</div>
+      </div>
+    </div></div>
+
+    <!-- TRATTORIA -->
+    <div class="oc"><div class="os" style="background:#8A3A28"></div><div class="ob">
+      <div class="on2">Trattoria Pantaleone</div>
+      <div class="osub" style="font-family:var(--fi);font-style:italic">Tradição Italiana · Ingredientes Algarvios</div>
+      <div class="od">Tradição italiana com ingredientes algarvios. Ambiente acolhedor e familiar. Qui–Seg à noite. O outlet mais informal — ideal para famílias e estadias longas.</div>
+      <div class="oac">
+        <div class="oa">Qui–Seg 18h30–22h30 · acolhedor e familiar · Resort Chic</div>
+        <div class="oa">Chronicle Dinners Set 7: Ricardo × Stefano Bulla (Mediterrâneo) — comunicar 60 dias antes</div>
+        <div class="oa">Pasta making experience: workshop 90min + jantar · €55/pessoa · máx 10</div>
+        <div class="oa">GMB dedicado "Trattoria Pantaleone Vilalara" para captação de não-hóspedes locais</div>
+      </div>
+    </div></div>
+
   </div>
   <hr class="dk">
   <div class="sl">Spa &amp; Thalasso — produto diferenciador</div>
