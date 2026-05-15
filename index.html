@@ -1,483 +1,1166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Season Highlights 2026 — Vilalara Grand Hotel Algarve</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<title>Vilalara — Growth Marketing Plan 2026–2031</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;1,400;1,500&family=DM+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+/* ─── BRAND TOKENS — Manual de Normas ──────────────────────────────── */
 :root{
-  /* Brand colours */
-  --cream:   #F5F0E8;
-  --cream2:  #EDE7DB;
-  --ink:     #453519;   /* Vilalara dark brown */
-  --ink2:    #5c471f;
-  --muted:   #8A7E6E;
-  --faint:   #B8AC9A;
-  --border:  #DDD5C2;
-  --footer:  #E3DECF;   /* footer bg */
-  --white:   #FFFFFF;
-
-  /* Overlay brown (replaces black) */
-  --ov: 69,53,25;  /* #453519 in rgb */
-
-  /* Fonts */
-  --f-display: "Optima","Optima Nova LT","Segoe UI","Helvetica Neue",Arial,sans-serif;
-  --f-script:  "Cormorant Garamond","Georgia",serif;
-  --f-body:    "Gill Sans","Gill Sans MT","Calibri","Arial",sans-serif;
+  --T:#453519;   /* Tierra  Pantone 476U */
+  --T2:#5C4A28;  /* Tierra light */
+  --T3:#2E2210;  /* Tierra dark */
+  --T4:#1C1508;  /* Tierra darker */
+  --H:#E3DECF;   /* Hueso   Pantone 7527U */
+  --H2:#D4CCBA;
+  --W:#FCFBF8;   /* Branco */
+  --gold-text:#8A7040;
+  --gold-dim:rgba(69,53,25,.42);
+  --gold-xs:rgba(69,53,25,.06);
+  --gold-sm:rgba(69,53,25,.14);
+  --gold-md:rgba(69,53,25,.28);
+  --i4:rgba(69,53,25,.44);
+  --i15:rgba(69,53,25,.11);
+  --rd:#7A2018;--rdf:rgba(122,32,24,.08);--rdb:rgba(122,32,24,.22);
+  --gn:#1A4A2E;--gnf:rgba(26,74,46,.08);--gnb:rgba(26,74,46,.20);
+  --ff:'Cinzel',Optima,'Trebuchet MS',sans-serif;        /* Optima Nova → Cinzel */
+  --fi:'EB Garamond',Garamond,Georgia,serif;             /* Millionaire → EB Garamond italic */
+  --fb:'DM Sans','Gill Sans MT','Gill Sans',system-ui,sans-serif; /* Gill Sans → DM Sans */
+  --ez:cubic-bezier(.25,.46,.45,.94)
 }
-html{scroll-behavior:smooth;}
-body{background:var(--cream);color:var(--ink);font-family:var(--f-body);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--W);color:var(--T);line-height:1.65;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--H)}::-webkit-scrollbar-thumb{background:var(--T2);border-radius:2px}
 
-/* ── NAV ── */
-.site-nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(245,240,232,0.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
-.nav-top{display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:78px;position:relative;}
-.nav-lang{font-family:var(--f-display);font-size:0.65rem;font-weight:400;letter-spacing:0.1em;color:var(--muted);text-decoration:none;}
-.nav-lang:hover{color:var(--ink);}
-.nav-logo{position:absolute;left:50%;transform:translateX(-50%);text-decoration:none;}
-.nav-logo img{height:36px;width:auto;}
-.nav-actions{display:flex;align-items:center;gap:1.5rem;}
-.nav-link-sm{font-family:var(--f-display);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;transition:color .2s;}
-.nav-link-sm:hover{color:var(--muted);}
-.nav-book{font-family:var(--f-display);font-size:0.6rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:0.5rem 1.3rem;text-decoration:none;transition:background .2s;}
-.nav-book:hover{background:var(--ink2);}
-.nav-bottom{display:flex;align-items:center;justify-content:center;gap:2.5rem;border-top:1px solid var(--border);padding:0.5rem 2.5rem;}
-.nav-bot-link{font-family:var(--f-display);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;transition:color .2s;white-space:nowrap;}
-.nav-bot-link:hover,.nav-bot-link.active{color:var(--muted);}
+/* ─── LOADER ─────────────────────────────────────────────────────────── */
+#ld{position:fixed;inset:0;background:var(--T4);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .65s var(--ez)}
+#ld.out{opacity:0;pointer-events:none}
+.lv{font-family:var(--ff);font-size:88px;font-weight:300;color:var(--H);letter-spacing:.06em;opacity:0;transform:translateY(18px);animation:fu .8s var(--ez) .3s forwards}
+.lsub{font-size:9px;font-weight:300;letter-spacing:.38em;text-transform:uppercase;color:rgba(227,222,207,.4);margin-top:12px;opacity:0;animation:fu .8s var(--ez) .9s forwards}
+.lline{width:60px;height:1px;background:var(--H2);margin:16px auto 0;transform:scaleX(0);transform-origin:left;animation:li .9s var(--ez) 1.4s forwards}
+@keyframes fu{to{opacity:1;transform:translateY(0)}}
+@keyframes li{to{transform:scaleX(1)}}
 
-/* ── HERO ── */
-.hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:5rem;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background-image:url('https://vilalara.com/wp-content/uploads/2025/11/occasions_pool.webp');background-size:cover;background-position:center 55%;}
-.hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(var(--ov),.82) 0%,rgba(var(--ov),.35) 55%,rgba(var(--ov),.1) 100%);}
-.hero-content{position:relative;z-index:2;text-align:center;padding:0 2rem;}
-.hero-eyebrow{font-family:var(--f-display);font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(245,240,232,.65);margin-bottom:1.25rem;}
-.hero-title{font-family:var(--f-display);font-size:clamp(2.8rem,7vw,5.5rem);font-weight:300;line-height:1.05;color:#F5F0E8;margin-bottom:0.4rem;letter-spacing:0.05em;}
-.hero-italic{font-family:var(--f-script);font-size:clamp(2rem,5vw,4rem);font-style:italic;font-weight:300;color:#F5F0E8;display:block;margin-bottom:1.5rem;}
-.hero-sub{font-family:var(--f-script);font-size:clamp(1rem,2vw,1.3rem);font-style:italic;color:rgba(245,240,232,.6);margin-bottom:2.5rem;}
-.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
-.btn-light-outline{font-family:var(--f-display);font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;border:1px solid rgba(245,240,232,.65);color:#F5F0E8;padding:0.7rem 1.75rem;text-decoration:none;transition:all .25s;}
-.btn-light-outline:hover{background:rgba(245,240,232,.12);border-color:#F5F0E8;}
-.btn-light-solid{font-family:var(--f-display);font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;background:#F5F0E8;color:var(--ink);padding:0.7rem 1.75rem;text-decoration:none;transition:background .2s;}
-.btn-light-solid:hover{background:#fff;}
+/* ─── NAV ────────────────────────────────────────────────────────────── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:58px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 52px;
+  background:rgba(44,33,12,.96);
+  backdrop-filter:blur(20px) saturate(1.4);
+  border-bottom:1px solid rgba(92,74,40,.22);
+  transform:translateY(-100%);
+  animation:slideDown .45s var(--ez) 2s forwards;
+  transition:background .35s var(--ez),box-shadow .35s,height .3s var(--ez)
+}
+#nav.solid{
+  background:rgba(30,22,8,.98);
+  border-bottom-color:rgba(92,74,40,.32);
+  height:52px;
+  box-shadow:0 2px 40px rgba(0,0,0,.18)
+}
+@keyframes slideDown{to{transform:translateY(0)}}
 
-/* ── COUNTDOWN ── */
-.cd-bar{background:var(--cream2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.25rem 2rem;text-align:center;}
-.cd-kicker{font-family:var(--f-display);font-size:0.58rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;}
-.cd-evname{font-family:var(--f-script);font-size:clamp(1.1rem,2.5vw,1.6rem);font-style:italic;color:var(--ink);margin-bottom:1.25rem;}
-.cd-units{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:1.25rem;align-items:flex-end;}
-.cd-unit{text-align:center;}
-/* Vilalara Display numerals — serif, elegant, brand brown */
-.cd-num{font-family:var(--f-script);font-size:clamp(3rem,7vw,4.5rem);font-weight:300;color:var(--ink);display:block;line-height:1;}
-.cd-label{font-family:var(--f-display);font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--faint);margin-top:0.25rem;}
-.cd-sep{font-family:var(--f-display);font-size:1.5rem;color:var(--faint);padding-bottom:0.6rem;user-select:none;}
-.btn-dark{display:inline-block;font-family:var(--f-display);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:0.6rem 1.6rem;text-decoration:none;transition:background .2s;}
-.btn-dark:hover{background:var(--ink2);}
 
-/* ── INTRO ── */
-.intro{max-width:720px;margin:0 auto;padding:5rem 2rem;text-align:center;}
-.band-kicker{font-family:var(--f-display);font-size:0.58rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;}
-.band-title{font-family:var(--f-display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:300;letter-spacing:0.06em;color:var(--ink);margin-bottom:0.35rem;}
-.band-italic{font-family:var(--f-script);font-size:clamp(1.5rem,3.5vw,2.4rem);font-style:italic;color:var(--ink);display:block;margin-bottom:1.25rem;}
-.band-body{font-family:var(--f-body);font-size:0.9rem;color:var(--muted);line-height:1.9;max-width:580px;margin:0 auto;}
+.nbrand{
+  font-family:var(--ff);font-size:13px;font-weight:400;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--H);
+  white-space:nowrap;flex-shrink:0;cursor:pointer;
+  transition:opacity .2s
+}
+.nbrand:hover{opacity:.8}
+.nbrand span{color:var(--H2);font-style:italic;font-family:var(--fi)}
 
-/* ── PIPE SEPARATOR ── */
-.pipe-sep{text-align:center;padding:0.6rem 0;font-family:var(--f-script);font-size:1.4rem;color:var(--faint);user-select:none;letter-spacing:0.5em;}
+/* Desktop links */
+.nlinks{display:flex;gap:0;overflow:hidden}
+.nbt{
+  padding:5px 10px;font-size:9px;font-weight:400;letter-spacing:.16em;
+  text-transform:uppercase;
+  color:rgba(227,222,207,.48);
+  border:none;background:none;cursor:pointer;
+  border-bottom:2px solid transparent;
+  transition:color .18s;white-space:nowrap
+}
+.nbt:hover{color:rgba(227,222,207,.88)}
+.nbt.on{color:var(--H);border-bottom-color:var(--H2);font-weight:500}
 
-/* ── EVENT SECTION ── */
-.ev-section{display:grid;grid-template-columns:1fr 1fr;min-height:560px;}
-.ev-section.rev{direction:rtl;}
-.ev-section.rev>*{direction:ltr;}
-.ev-text{display:flex;flex-direction:column;justify-content:center;padding:4.5rem 4.5rem 4.5rem 5.5rem;}
-.ev-section.rev .ev-text{padding:4.5rem 5.5rem 4.5rem 4.5rem;}
-.ev-img{overflow:hidden;position:relative;}
-.ev-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s ease;}
-.ev-img:hover img{transform:scale(1.04);}
-.ev-kicker{font-family:var(--f-display);font-size:0.56rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
-.ev-title{font-family:var(--f-display);font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:300;letter-spacing:0.05em;color:var(--ink);margin-bottom:0.2rem;line-height:1.15;}
-.ev-script{font-family:var(--f-script);font-size:clamp(1.4rem,2.5vw,2rem);font-style:italic;font-weight:300;color:var(--ink);display:block;margin-bottom:0.5rem;line-height:1.2;}
-.ev-venue{font-family:var(--f-display);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);margin-bottom:1.25rem;}
-.ev-desc{font-family:var(--f-body);font-size:0.88rem;color:var(--muted);line-height:1.88;margin-bottom:1.75rem;max-width:390px;}
-.btn-more{display:inline-block;font-family:var(--f-display);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;border:1px solid var(--ink);color:var(--ink);padding:0.6rem 1.4rem;text-decoration:none;transition:all .2s;}
-.btn-more:hover{background:var(--ink);color:var(--white);}
-.ev-note{font-family:var(--f-script);font-size:0.75rem;font-style:italic;color:var(--faint);margin-top:0.75rem;}
+/* Hamburger */
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.ham span{width:22px;height:1.5px;background:rgba(227,222,207,.75);border-radius:1px;transition:all .25s var(--ez);display:block}
+.ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
-/* ── FULL-WIDTH DARK SECTION ── */
-.full-dark{position:relative;min-height:560px;display:flex;align-items:center;overflow:hidden;}
-.full-dark-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
-.full-dark-ov{position:absolute;inset:0;}
-.full-dark-content{position:relative;z-index:2;max-width:560px;padding:5rem 5.5rem;}
-.full-dark.right .full-dark-content{margin-left:auto;}
-.full-kicker{font-family:var(--f-display);font-size:0.56rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(245,240,232,.55);margin-bottom:1rem;display:block;}
-.full-title{font-family:var(--f-display);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:300;letter-spacing:0.05em;color:#F5F0E8;line-height:1.1;margin-bottom:0.25rem;}
-.full-italic{font-family:var(--f-script);font-size:clamp(1.4rem,2.8vw,2.2rem);font-style:italic;color:rgba(245,240,232,.82);display:block;margin-bottom:1.5rem;}
-.full-desc{font-family:var(--f-body);font-size:0.88rem;color:rgba(245,240,232,.62);line-height:1.88;margin-bottom:2rem;}
-.btn-light{display:inline-block;font-family:var(--f-display);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;border:1px solid rgba(245,240,232,.55);color:#F5F0E8;padding:0.6rem 1.4rem;text-decoration:none;transition:all .25s;}
-.btn-light:hover{background:rgba(245,240,232,.12);}
-.full-footnote{font-family:var(--f-script);font-size:0.72rem;font-style:italic;color:rgba(245,240,232,.38);margin-top:0.9rem;display:block;}
+/* Mobile drawer */
+#drawer{
+  position:fixed;top:54px;left:0;right:0;z-index:499;
+  background:rgba(252,251,248,.98);
+  backdrop-filter:blur(28px) saturate(1.8);
+  border-bottom:1px solid rgba(69,53,25,.1);
+  box-shadow:0 8px 32px rgba(69,53,25,.08);
+  padding:0;max-height:0;overflow:hidden;
+  transition:max-height .35s var(--ez),padding .35s
+}
+#drawer.open{max-height:520px;padding:12px 0 16px}
+.dbt{
+  display:block;width:100%;text-align:left;
+  padding:11px 28px;font-size:10px;font-weight:400;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(69,53,25,.38);background:none;border:none;cursor:pointer;
+  transition:color .15s;border-bottom:1px solid rgba(69,53,25,.05)
+}
+.dbt:last-child{border-bottom:none}
+.dbt:hover{color:var(--T2)}
+.dbt.on{color:var(--T);font-weight:500}
 
-/* ── GASTRONOMY GRID ── */
-.gastro-wrap{background:var(--white);padding:5.5rem 2rem;}
-.gastro-inner{max-width:1080px;margin:0 auto;}
-.gastro-header{text-align:center;margin-bottom:4rem;}
-.gastro-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);}
-.g-card{background:var(--cream);padding:2.25rem 1.75rem;}
-.g-card-date{font-family:var(--f-display);font-size:0.54rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:0.85rem;display:block;}
-.g-card-title{font-family:var(--f-display);font-size:1.05rem;font-weight:300;color:var(--ink);margin-bottom:0.35rem;line-height:1.25;letter-spacing:0.04em;}
-.g-card-chefs{font-family:var(--f-script);font-size:0.85rem;font-style:italic;color:var(--muted);margin-bottom:0.6rem;}
-.g-card-place{font-family:var(--f-display);font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);}
+/* Nyr */
+.nyr{font-size:8.5px;font-weight:300;letter-spacing:.18em;color:rgba(227,222,207,.3);white-space:nowrap;flex-shrink:0}
 
-/* ── FOOTER ── */
-.site-footer{background:var(--footer);border-top:1px solid var(--border);padding:4.5rem 2rem 2rem;}
-.footer-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:4rem;margin-bottom:3.5rem;}
-.footer-logo img{height:38px;width:auto;margin-bottom:1rem;}
-.footer-tagline{font-family:var(--f-script);font-size:0.85rem;font-style:italic;color:var(--muted);line-height:1.7;}
-.footer-col-title{font-family:var(--f-display);font-size:0.54rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
-.footer-col-links{list-style:none;}
-.footer-col-links li{margin-bottom:0.45rem;}
-.footer-col-links a{font-family:var(--f-body);font-size:0.82rem;color:var(--ink);text-decoration:none;transition:color .2s;}
-.footer-col-links a:hover{color:var(--muted);}
-.footer-bottom{max-width:1080px;margin:0 auto;border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-.footer-copy{font-family:var(--f-body);font-size:0.68rem;color:var(--muted);}
-.footer-links-row{display:flex;gap:2rem;}
-.footer-links-row a{font-family:var(--f-display);font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
-.footer-links-row a:hover{color:var(--ink);}
+/* ─── APP ─────────────────────────────────────────────────────────────── */
+#app{padding-top:62px}
+.pg{display:none;animation:pi .32s var(--ez)}.pg.on{display:block}
+@keyframes pi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── RESPONSIVE ── */
+/* ─── HERO ─────────────────────────────────────────────────────────────── */
+.hero{min-height:calc(100vh - 58px);display:grid;grid-template-columns:58% 42%}
+.hl{
+  background:var(--T4);
+  padding:80px 60px;display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;overflow:hidden
+}
+.hl::before{content:'';position:absolute;bottom:-80px;left:-60px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(92,74,40,.12) 0%,transparent 66%)}
+.hbg{
+  font-family:var(--ff);font-size:200px;font-weight:300;
+  color:rgba(227,222,207,.032);
+  position:absolute;right:-16px;top:-14px;line-height:1;pointer-events:none
+}
+.hey{font-size:9px;font-weight:300;letter-spacing:.34em;text-transform:uppercase;color:var(--H2);margin-bottom:18px}
+.ht{font-family:var(--ff);font-size:62px;font-weight:300;color:var(--W);line-height:1.04;letter-spacing:-.005em}
+.ht em{font-family:var(--fi);font-style:italic;color:var(--H2);font-size:70px}
+.hdiv{width:36px;height:1px;background:var(--H2);margin:24px 0}
+.hx{font-size:13px;font-weight:300;color:rgba(227,222,207,.46);line-height:1.76;max-width:340px}
+.hst{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:48px;border-top:1px solid rgba(227,222,207,.07)}
+.hsi{padding:18px 14px;background:rgba(255,255,255,.025)}
+.hsv{font-family:var(--ff);font-size:29px;font-weight:300;color:var(--H2);line-height:1}
+.hsl{font-size:8.5px;font-weight:300;letter-spacing:.13em;text-transform:uppercase;color:rgba(227,222,207,.3);margin-top:5px}
+
+.hr{background:var(--H);padding:80px 48px;display:flex;flex-direction:column;justify-content:center;position:relative}
+.hr::before{content:'';position:absolute;top:0;left:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--gold-md),transparent)}
+
+/* ─── PAGE HEADER ──────────────────────────────────────────────────────── */
+.ph{background:var(--T3);padding:36px 60px 32px;position:relative;overflow:hidden;border-bottom:1px solid rgba(92,74,40,.2)}
+.ph::after{content:attr(data-bg);position:absolute;right:48px;top:50%;transform:translateY(-50%);font-family:var(--ff);font-size:120px;font-weight:300;color:rgba(227,222,207,.032);line-height:1;pointer-events:none;letter-spacing:-.01em}
+.pey{font-size:9px;font-weight:300;letter-spacing:.3em;text-transform:uppercase;color:var(--H2);margin-bottom:7px}
+.pt{font-family:var(--ff);font-size:40px;font-weight:300;color:var(--W);line-height:1.1}
+.pt em{font-family:var(--fi);font-style:italic;color:var(--H2)}
+.px{font-size:12.5px;font-weight:300;color:rgba(227,222,207,.44);margin-top:9px;max-width:540px;line-height:1.65}
+.prl{width:34px;height:1px;background:var(--H2);margin:13px 0 0}
+
+/* ─── DARK SECTIONS ────────────────────────────────────────────────────── */
+.dk-section{background:var(--T3);padding:40px 60px}
+.dk-section .sl{color:var(--H2)}
+.dk-section .st{color:var(--W)}
+.dk-section .sx{color:rgba(227,222,207,.44)}
+
+/* ─── BODY ──────────────────────────────────────────────────────────────── */
+.pb{padding:40px 60px}
+
+/* ─── SECTION ───────────────────────────────────────────────────────────── */
+.sl{font-size:9px;font-weight:400;letter-spacing:.26em;text-transform:uppercase;color:var(--T2);margin-bottom:5px;margin-top:32px}.sl:first-child{margin-top:0}
+.st{font-family:var(--ff);font-size:26px;font-weight:400;color:var(--T);line-height:1.14;margin-bottom:6px}
+.sx{font-size:12.5px;font-weight:300;color:var(--i4);margin-bottom:18px;line-height:1.72;max-width:640px}
+
+/* ─── KPI CARDS (light) ─────────────────────────────────────────────────── */
+.kg{display:grid;gap:9px}
+.k2{grid-template-columns:1fr 1fr}.k3{grid-template-columns:repeat(3,1fr)}.k4{grid-template-columns:repeat(4,1fr)}
+.kc{background:var(--W);border:1px solid var(--i15);border-radius:10px;padding:15px 17px;transition:all .18s}
+.kc:hover{border-color:var(--gold-sm);transform:translateY(-1px);box-shadow:0 5px 18px rgba(69,53,25,.08)}
+.kc.G{border-left:3px solid var(--T2)}.kc.R{border-left:3px solid var(--rd)}.kc.E{border-left:3px solid var(--gn)}
+.kl{font-size:9px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--i4);margin-bottom:4px}
+.kv{font-family:var(--ff);font-size:24px;font-weight:400;color:var(--T);line-height:1;margin-bottom:3px}
+.kd{font-size:11px;font-weight:300;color:var(--i4)}
+.up{color:var(--gn);font-weight:500}.dn{color:var(--rd);font-weight:500}.go{color:var(--T2);font-weight:500}
+
+/* ─── KPI CARDS (dark) ──────────────────────────────────────────────────── */
+.kdc{background:rgba(255,255,255,.04);border:1px solid rgba(227,222,207,.1);border-radius:10px;padding:15px 17px;transition:all .18s}
+.kdc:hover{border-color:rgba(227,222,207,.22)}
+.kdc.G{border-left:3px solid var(--H2)}
+.kdc .kl{color:rgba(227,222,207,.34)}
+.kdc .kv{color:var(--H2)}
+.kdc .kd{color:rgba(227,222,207,.36)}
+
+/* ─── CALLOUTS ──────────────────────────────────────────────────────────── */
+.cal{border-radius:6px;padding:14px 18px;margin-bottom:10px;border-left:3px solid}
+.cal.G{background:var(--gold-xs);border-color:var(--T2)}
+.cal.R{background:var(--rdf);border-color:var(--rd)}
+.cal.E{background:var(--gnf);border-color:var(--gn)}
+.cal.D{background:rgba(255,255,255,.04);border-color:rgba(227,222,207,.18)}
+.ct{font-size:12.5px;font-weight:500;margin-bottom:4px}
+.cal.G .ct{color:var(--T)}.cal.R .ct{color:var(--rd)}.cal.E .ct{color:var(--gn)}.cal.D .ct{color:rgba(227,222,207,.82)}
+.cb{font-size:12px;font-weight:300;color:var(--i4);line-height:1.64}
+.cal.D .cb{color:rgba(227,222,207,.44)}
+
+/* ─── INSIGHT ────────────────────────────────────────────────────────────── */
+.ins{background:var(--H);border:1px solid var(--gold-sm);border-radius:10px;padding:18px 20px;margin:14px 0}
+.inh{font-size:9px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--T2);margin-bottom:8px}
+.inl{list-style:none}
+.inl li{font-size:12px;font-weight:300;color:var(--i4);padding:5px 0;border-bottom:1px solid var(--i15);line-height:1.56}
+.inl li:last-child{border:none}.inl li::before{content:'— ';color:var(--T2)}
+.dins{background:rgba(255,255,255,.04);border:1px solid rgba(227,222,207,.12);border-radius:10px;padding:18px 20px;margin:14px 0}
+.dins .inh{color:var(--H2)}
+.dins .inl li{color:rgba(227,222,207,.44);border-color:rgba(255,255,255,.06)}
+.dins .inl li::before{color:var(--H2)}
+
+/* ─── TABLE ──────────────────────────────────────────────────────────────── */
+.tw{overflow-x:auto;margin:10px 0}
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead tr{border-bottom:2px solid var(--gold-sm)}
+th{font-size:9px;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:var(--i4);padding:8px 10px;text-align:left;background:var(--H)}
+td{padding:8px 10px;border-bottom:1px solid var(--i15);color:var(--i4);font-weight:300}
+tr.bo td{font-weight:500;color:var(--T);background:var(--H)}
+tr.go td{color:var(--T2);font-weight:500;background:var(--gold-xs)}
+tr.rd td{color:var(--rd);font-weight:500;background:var(--rdf)}
+tr.en td{color:var(--gn);font-weight:500;background:var(--gnf)}
+.dktable th{background:rgba(255,255,255,.06);color:rgba(227,222,207,.34)}
+.dktable td{color:rgba(227,222,207,.46);border-color:rgba(255,255,255,.06)}
+.dktable tr.bo td{background:rgba(255,255,255,.08);color:var(--W)}
+.dktable tr.go td{background:rgba(92,74,40,.2);color:var(--H2)}
+.dktable tr.rd td{background:rgba(122,32,24,.12);color:#D08070}
+tr:hover:not(.bo):not(.go):not(.rd):not(.en) td{background:var(--gold-xs)}
+tr:last-child td{border:none}
+
+/* ─── TABS ───────────────────────────────────────────────────────────────── */
+.tabs{display:flex;border-bottom:1px solid var(--i15);margin-bottom:22px;overflow-x:auto}.tabs::-webkit-scrollbar{display:none}
+.tab{padding:9px 15px;font-size:9.5px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--i4);cursor:pointer;border:none;background:none;border-bottom:2.5px solid transparent;transition:all .15s;white-space:nowrap}
+.tab:hover{color:var(--T2)}.tab.on{color:var(--T);border-bottom-color:var(--T2);font-weight:500}
+.tp{display:none}.tp.on{display:block;animation:pi .24s var(--ez)}
+.dtabs{border-color:rgba(255,255,255,.08)}
+.dtabs .tab{color:rgba(227,222,207,.34)}.dtabs .tab:hover{color:rgba(227,222,207,.75)}.dtabs .tab.on{color:var(--H);border-bottom-color:var(--H2)}
+
+/* ─── YEAR PILLS ─────────────────────────────────────────────────────────── */
+.yp{display:flex;gap:7px;margin-bottom:18px;flex-wrap:wrap}
+.yb{padding:5px 14px;font-size:9.5px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;border:1px solid rgba(227,222,207,.16);border-radius:20px;cursor:pointer;background:transparent;color:rgba(227,222,207,.42);transition:all .15s}
+.yb:hover{border-color:var(--H2);color:rgba(227,222,207,.82)}.yb.on{background:var(--H2);border-color:var(--H2);color:var(--T4)}
+.yc{display:none}.yc.on{display:block;animation:pi .24s var(--ez)}
+
+/* ─── TIMELINE ───────────────────────────────────────────────────────────── */
+.tl{position:relative;padding-left:26px}
+.tl::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:linear-gradient(to bottom,var(--T2),rgba(92,74,40,.2),transparent)}
+.ti{position:relative;margin-bottom:24px}
+.tdot{position:absolute;left:-22px;top:4px;width:8px;height:8px;border-radius:50%;background:var(--W);border:1.5px solid var(--T2);transition:background .15s}
+.ti:hover .tdot{background:var(--T2)}
+.tq{font-size:9px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:var(--T2);margin-bottom:4px}
+.tn{font-size:14px;font-weight:500;color:var(--T);margin-bottom:4px}
+.tx{font-size:12px;font-weight:300;color:var(--i4);line-height:1.62}
+.tgs{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}
+/* dark timeline */
+.dtl .tl::before{background:linear-gradient(to bottom,var(--H2),rgba(227,222,207,.2),transparent)}
+.dtl .tdot{background:var(--T3);border-color:var(--H2)}
+.dtl .ti:hover .tdot{background:var(--H2)}
+.dtl .tq{color:var(--H2)}
+.dtl .tn{color:var(--W)}
+.dtl .tx{color:rgba(227,222,207,.44)}
+
+/* ─── TAGS ───────────────────────────────────────────────────────────────── */
+.tag{font-size:9px;padding:2px 7px;border-radius:20px;background:var(--gold-xs);color:var(--T2);border:1px solid var(--gold-sm);display:inline-block;letter-spacing:.06em}
+.tag.r{background:var(--rdf);color:var(--rd);border-color:var(--rdb)}
+.tag.g{background:var(--gnf);color:var(--gn);border-color:var(--gnb)}
+.tag.w{background:rgba(255,255,255,.08);color:rgba(227,222,207,.65);border-color:rgba(255,255,255,.14)}
+
+/* ─── ACTION LIST ────────────────────────────────────────────────────────── */
+.al{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+.ai{display:flex;align-items:flex-start;gap:12px;padding:12px 15px;background:var(--W);border:1px solid var(--i15);border-radius:7px;transition:all .15s}
+.ai:hover{border-color:var(--gold-sm);background:var(--gold-xs)}
+.dk .ai{background:rgba(255,255,255,.04);border-color:rgba(227,222,207,.1)}
+.dk .ai:hover{border-color:rgba(227,222,207,.22);background:rgba(255,255,255,.06)}
+.an{font-family:var(--ff);font-size:18px;font-weight:300;color:var(--gold-sm);min-width:28px;line-height:1}
+.ab{flex:1}.at{font-size:13px;font-weight:500;color:var(--T);margin-bottom:3px}
+.dk .at{color:rgba(227,222,207,.88)}
+.ax{font-size:11.5px;font-weight:300;color:var(--i4);line-height:1.58}
+.dk .ax{color:rgba(227,222,207,.44)}
+.am{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
+.pr{display:inline-flex;align-items:center;gap:3px;font-size:8.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:20px}
+.pr::before{content:'●';font-size:5.5px}
+.pr.cr{background:var(--rdf);color:var(--rd)}.pr.hi{background:var(--gold-xs);color:var(--T2)}.pr.md{background:var(--gnf);color:var(--gn)}
+
+/* ─── PHASES ──────────────────────────────────────────────────────────────── */
+.phs{display:flex;border:1px solid var(--gold-sm);border-radius:10px;overflow:hidden;margin:20px 0}
+.phi{flex:1;padding:12px 8px;text-align:center;background:rgba(255,255,255,.03);border-right:1px solid var(--gold-sm);cursor:pointer;transition:background .15s}
+.phi:last-child{border-right:none}.phi:hover{background:rgba(227,222,207,.06)}.phi.cur{background:var(--T2)}
+.phn{font-family:var(--ff);font-size:17px;font-weight:400;color:var(--H2)}.phi.cur .phn{color:var(--W)}
+.phl{font-size:8px;font-weight:300;letter-spacing:.1em;text-transform:uppercase;color:rgba(227,222,207,.32);margin-top:2px;line-height:1.3}.phi.cur .phl{color:rgba(255,255,255,.65)}
+
+/* ─── GAUGES ─────────────────────────────────────────────────────────────── */
+.gauges{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+.gi{flex:1;min-width:96px;background:rgba(255,255,255,.04);border:1px solid rgba(227,222,207,.1);border-radius:8px;padding:12px;text-align:center}
+.gv{font-family:var(--ff);font-size:23px;font-weight:300;color:var(--W);line-height:1}
+.gl2{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(227,222,207,.32);margin-top:3px}
+.grk{font-size:9.5px;margin-top:5px;padding:2px 6px;border-radius:4px;display:inline-block}
+.grk.bad{color:#D07060;background:rgba(176,80,64,.12)}.grk.ok{color:var(--H2);background:rgba(92,74,40,.18)}.grk.good{color:#70AA80;background:rgba(80,160,100,.1)}
+
+/* ─── OUTLET CARDS ───────────────────────────────────────────────────────── */
+.og{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.oc{background:rgba(255,255,255,.04);border:1px solid rgba(227,222,207,.1);border-radius:10px;overflow:hidden;transition:all .18s;display:flex;flex-direction:column}
+.oc:hover{border-color:rgba(227,222,207,.22);transform:translateY(-2px)}
+.os{height:3px}
+.ob{padding:15px;flex:1}
+.on2{font-family:var(--ff);font-size:14px;font-weight:400;color:var(--W);margin-bottom:1px}
+.osub{font-size:8.5px;font-weight:300;letter-spacing:.1em;text-transform:uppercase;color:rgba(227,222,207,.3);margin-bottom:9px;font-style:italic;font-family:var(--fi)}
+.od{font-size:11.5px;font-weight:300;color:rgba(227,222,207,.42);line-height:1.6;margin-bottom:10px}
+.oac{display:flex;flex-direction:column;gap:4px;border-top:1px solid rgba(255,255,255,.06);padding-top:9px;margin-top:auto}
+.oa{font-size:11px;font-weight:300;color:rgba(227,222,207,.5);display:flex;align-items:flex-start;gap:6px;line-height:1.5}
+.oa::before{content:'→';color:var(--H2);flex-shrink:0;font-size:11px}
+
+/* ─── SUSTENTABILIDADE ───────────────────────────────────────────────────── */
+.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.sc{background:rgba(255,255,255,.04);border:1px solid rgba(227,222,207,.1);border-radius:10px;padding:16px;transition:all .18s}
+.sc:hover{border-color:rgba(227,222,207,.2)}
+.si{font-size:20px;margin-bottom:8px}
+.st2{font-family:var(--ff);font-size:13px;font-weight:400;color:rgba(227,222,207,.88);margin-bottom:5px}
+.sx2{font-size:11.5px;font-weight:300;color:rgba(227,222,207,.42);line-height:1.64}
+.stag{display:inline-block;font-size:8.5px;padding:2px 7px;border-radius:20px;background:var(--gnf);color:var(--gn);border:1px solid var(--gnb);margin-top:7px}
+
+/* ─── REV BARS ───────────────────────────────────────────────────────────── */
+.rc{display:flex;flex-direction:column;gap:7px;margin:16px 0}
+.rr{display:flex;align-items:center;gap:12px}
+.rl{font-size:10.5px;font-weight:300;color:rgba(227,222,207,.4);min-width:82px;text-align:right}
+.rw{flex:1;height:29px;background:rgba(255,255,255,.06);border-radius:6px;overflow:hidden}
+.rf{height:100%;background:linear-gradient(90deg,var(--T2),var(--T));display:flex;align-items:center;padding-left:9px;font-size:11px;font-weight:400;color:var(--H);transition:width 1.4s var(--ez);border-radius:6px}
+.rr.tgt .rf{background:linear-gradient(90deg,rgba(227,222,207,.1),rgba(227,222,207,.18))}
+.rr.tgt .rf{color:rgba(227,222,207,.7)}
+
+/* ─── BRAND MATRIX ───────────────────────────────────────────────────────── */
+.bm{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(227,222,207,.12);border-radius:10px;overflow:hidden;margin:14px 0}
+.bc{background:rgba(255,255,255,.04);padding:18px;transition:background .15s}
+.bc:hover{background:rgba(227,222,207,.06)}
+.bc-label{font-size:9px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--H2);margin-bottom:5px}
+.bc-val{font-size:13px;font-weight:300;color:rgba(227,222,207,.72);line-height:1.55}
+
+/* ─── DIVIDERS ───────────────────────────────────────────────────────────── */
+hr.rule{border:none;border-top:1px solid var(--i15);margin:24px 0}
+hr.gold{border-top-color:var(--gold-sm);margin:24px 0}
+hr.dk{border:none;border-top:1px solid rgba(255,255,255,.07);margin:24px 0}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────────────────── */
 @media(max-width:960px){
-  .nav-bottom{display:none;}
-  .ev-section{grid-template-columns:1fr;min-height:auto;}
-  .ev-section.rev{direction:ltr;}
-  .ev-img{height:320px;}
-  .ev-text,.ev-section.rev .ev-text{padding:3.5rem 2rem;}
-  .gastro-grid{grid-template-columns:1fr 1fr;}
-  .footer-inner{grid-template-columns:1fr;gap:2.5rem;}
-  .full-dark-content,.full-dark.right .full-dark-content{padding:4rem 2rem;margin-left:0;}
+  .hero{grid-template-columns:1fr}.hr{display:none}.hl{padding:46px 26px}.ht{font-size:46px}.ht em{font-size:52px}
+  .pb{padding:28px 20px}.ph,.dk-section{padding:28px 22px}
+  .k4{grid-template-columns:1fr 1fr}.k3{grid-template-columns:1fr 1fr}.og{grid-template-columns:1fr 1fr}.sg{grid-template-columns:1fr 1fr}
+  #nav{padding:0 20px}
+  .nlinks{display:none}
+  .ham{display:flex}
+  .nyr{display:none}
 }
-@media(max-width:560px){
-  .nav-top{padding:0 1.25rem;height:64px;}
-  .nav-logo img{height:28px;}
-  .nav-link-sm{display:none;}
-  .gastro-grid{grid-template-columns:1fr;}
-}
+@media(min-width:961px){#drawer{display:none!important}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<header class="site-nav">
-  <div class="nav-top">
-    <a href="https://vilalara.com/en/" class="nav-lang">EN &#9662;</a>
-    <a href="https://vilalara.com/en/" class="nav-logo">
-      <img src="https://vilalara.com/wp-content/uploads/2026/04/cropped-cropped-LOGO-DEFINTIVO-1-scaled-1.png" alt="Vilalara Grand Hotel Algarve">
-    </a>
-    <div class="nav-actions">
-      <a href="https://vilalara.com/en/gastronomy/" class="nav-link-sm">Gastronomy</a>
-      <a href="https://vilalara.com/en/wellness/" class="nav-link-sm">Wellness</a>
-      <a href="https://vilalara.com/en/book/" class="nav-book" target="_blank">Book</a>
-    </div>
-  </div>
-  <div class="nav-bottom">
-    <a href="https://vilalara.com/en/our-heritage/" class="nav-bot-link">Our Heritage</a>
-    <a href="https://vilalara.com/en/suites-residences/" class="nav-bot-link">Suites &amp; Residences</a>
-    <a href="https://vilalara.com/en/gastronomy/" class="nav-bot-link">Gastronomy</a>
-    <a href="https://vilalara.com/en/wellness/" class="nav-bot-link">Wellness</a>
-    <a href="https://vilalara.com/en/clubs/" class="nav-bot-link">Clubs</a>
-    <a href="https://vilalara.com/en/experiences/" class="nav-bot-link">Experiences</a>
-    <a href="https://vilalara.com/en/occasions/" class="nav-bot-link">Occasions</a>
-    <a href="#" class="nav-bot-link active">Season Highlights</a>
-  </div>
-</header>
+<div id="ld"><div class="lv">VL</div><div class="lsub">Grand Hotel Algarve · Est. 1966</div><div class="lline"></div></div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-ov"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Vilalara Grand Hotel Algarve &nbsp;|&nbsp; Est. 1966</p>
-    <h1 class="hero-title">60 Anos</h1>
-    <span class="hero-italic">of Vilalara</span>
-    <p class="hero-sub">A season marked by gastronomy, wellness, culture &amp; legacy</p>
-    <div class="hero-cta">
-      <a href="#events" class="btn-light-outline">Discover the Events</a>
-      <a href="https://vilalara.com/en/book/" class="btn-light-solid" target="_blank">Reserve Your Stay</a>
-    </div>
+<nav id="nav">
+  <div class="nbrand" data-page="home">VILALA<span>R</span>A</div>
+  <div class="nlinks">
+    <button class="nbt on"  data-page="home">Visão</button>
+    <button class="nbt" data-page="diag">Diagnóstico</button>
+    <button class="nbt" data-page="direto">Canal Direto</button>
+    <button class="nbt" data-page="merc">Mercados</button>
+    <button class="nbt" data-page="ads">Google Ads</button>
+    <button class="nbt" data-page="conv">Conversão &amp; CRM</button>
+    <button class="nbt" data-page="rev">Revenue/Hóspede</button>
+    <button class="nbt" data-page="marca">Marca</button>
+    <button class="nbt" data-page="sus">Sustentabilidade</button>
+    <button class="nbt" data-page="fin">Financeiro</button>
+    <button class="nbt" data-page="kpi">KPIs</button>
   </div>
-</section>
+  <button class="ham" id="hamBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nyr">Growth Marketing Plan · 2026–2031</div>
+</nav>
 
-<!-- COUNTDOWN -->
-<div class="cd-bar">
-  <p class="cd-kicker">Next Event</p>
-  <p class="cd-evname" id="cd-name">60 Years on the Cliffs</p>
-  <div class="cd-units">
-    <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-label">days</span></div>
-    <span class="cd-sep">|</span>
-    <div class="cd-unit"><span class="cd-num" id="cd-h">--</span><span class="cd-label">hours</span></div>
-    <span class="cd-sep">|</span>
-    <div class="cd-unit"><span class="cd-num" id="cd-m">--</span><span class="cd-label">minutes</span></div>
-    <span class="cd-sep">|</span>
-    <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-label">seconds</span></div>
-  </div>
-  <a href="https://vilalara.com/en/gastronomy/" class="btn-dark" target="_blank">Secure Your Place</a>
+<div id="drawer">
+  <button class="dbt on"  data-page="home">Visão</button>
+  <button class="dbt" data-page="diag">Diagnóstico</button>
+  <button class="dbt" data-page="direto">Canal Direto</button>
+  <button class="dbt" data-page="merc">Mercados</button>
+  <button class="dbt" data-page="ads">Google Ads</button>
+  <button class="dbt" data-page="conv">Conversão &amp; CRM</button>
+  <button class="dbt" data-page="rev">Revenue / Hóspede</button>
+  <button class="dbt" data-page="marca">Marca &amp; Posicionamento</button>
+  <button class="dbt" data-page="sus">Sustentabilidade</button>
+  <button class="dbt" data-page="fin">Financeiro</button>
+  <button class="dbt" data-page="kpi">KPIs &amp; Performance</button>
 </div>
 
-<!-- INTRO -->
-<div class="intro" id="events">
-  <p class="band-kicker">Season Highlights 2026</p>
-  <h2 class="band-title">A Season</h2>
-  <span class="band-italic">of Celebration</span>
-  <p class="band-body">Throughout 2026, Vilalara Grand Hotel marks six decades with a curated programme of unique events &mdash; chef&rsquo;s dinners, memorable nights, an immersive wellness week and much more, all set against the breathtaking cliffs of the Algarve.</p>
-</div>
-
-<div class="pipe-sep">|</div>
-
-<!-- 1. 60 YEARS ON THE CLIFFS -->
-<div class="ev-section">
-  <div class="ev-text">
-    <p class="ev-kicker">Gastronomy &nbsp;|&nbsp; 23 May 2026</p>
-    <h2 class="ev-title">60 Years</h2>
-    <span class="ev-script">on the Cliffs</span>
-    <p class="ev-venue">Gaivotas Restaurant &nbsp;|&nbsp; Opening Event</p>
-    <p class="ev-desc">An intimate dinner inspired by the elegance and atmosphere of the 1960s, on the cliffs where Vilalara&rsquo;s story began. With the presence of Lara Beir&atilde;o da Veiga, granddaughter of founder George Ansley, each course is accompanied by visual storytelling and photography celebrating the hotel&rsquo;s history.</p>
-    <div><a href="https://vilalara.com/en/gastronomy/" class="btn-more" target="_blank">Reserve Your Table</a></div>
-    <p class="ev-note">Limited seats &nbsp;|&nbsp; Legacy &nbsp;|&nbsp; Quiet luxury</p>
-  </div>
-  <div class="ev-img">
-    <img src="https://vilalara.com/wp-content/uploads/2025/11/occasions_celebrations.webp" alt="60 Years on the Cliffs" loading="lazy">
-  </div>
-</div>
-
-<div class="pipe-sep">|</div>
-
-<!-- 2. VILALARA × VILA LISA -->
-<div class="ev-section rev">
-  <div class="ev-text">
-    <p class="ev-kicker">Chronicle Dinners &nbsp;|&nbsp; 17 June 2026</p>
-    <h2 class="ev-title">Vilalara</h2>
-    <span class="ev-script">&times; Vila Lisa</span>
-    <p class="ev-venue">Ra&iacute;zes Horta da Terra &nbsp;|&nbsp; Two spaces with soul and age</p>
-    <p class="ev-desc">A special edition of the Chronicle Dinners uniting Vilalara and Vila Lisa through a shared philosophy of hospitality &mdash; places with character, memory and authenticity. A night dedicated to the dialogue between legacy and contemporaneity.</p>
-    <div><a href="https://vilalara.com/en/gastronomy/" class="btn-more" target="_blank">Reserve Your Table</a></div>
-    <p class="ev-note">Tasting menu &nbsp;|&nbsp; Legacy &nbsp;|&nbsp; Identity</p>
-  </div>
-  <div class="ev-img">
-    <img src="https://vilalara.com/wp-content/uploads/2024/05/Vilalara_Restaurant_Al-fresco-dining_Raizes--scaled.webp" alt="Vilalara x Vila Lisa at Raizes" loading="lazy">
-  </div>
-</div>
-
-<div class="pipe-sep">|</div>
-
-<!-- 3. SANTOS POPULARES -->
-<div class="ev-section">
-  <div class="ev-text">
-    <p class="ev-kicker">Social &nbsp;|&nbsp; 27 June 2026</p>
-    <h2 class="ev-title">Santos Populares</h2>
-    <span class="ev-script">at Vilalara</span>
-    <p class="ev-venue">Pra&ccedil;a das Rosas &nbsp;|&nbsp; Guests &amp; Partners</p>
-    <p class="ev-desc">An elegant and contemporary interpretation of the traditional Santos Populares festivals. Portuguese flavours, live music, gastronomic stations and moments of conviviality in a relaxed yet sophisticated atmosphere, crafted for guests, residents and invited partners.</p>
-    <div><a href="https://vilalara.com/en/book/" class="btn-more" target="_blank">Reserve Your Stay</a></div>
-    <p class="ev-note">Portuguese culture &nbsp;|&nbsp; Summer gathering</p>
-  </div>
-  <div class="ev-img">
-    <img src="https://vilalara.com/wp-content/uploads/2025/11/occasions_weddings.webp" alt="Santos Populares at Vilalara" loading="lazy">
-  </div>
-</div>
-
-<div class="pipe-sep">|</div>
-
-<!-- 4. CORAL × KABUKI -->
-<div class="ev-section rev">
-  <div class="ev-text">
-    <p class="ev-kicker">Chronicle Dinners &nbsp;|&nbsp; 11 July 2026</p>
-    <h2 class="ev-title">Coral &times; Kabuki</h2>
-    <span class="ev-script">Under the Pines</span>
-    <p class="ev-venue">Jardim dos Pinheiros &nbsp;|&nbsp; Atlantic meets Japan</p>
-    <p class="ev-desc">A singular encounter between Atlantic identity and Japanese precision. Beneath the pines of Vilalara, Coral welcomes Kabuki for an immersive gastronomic experience exploring texture, seasonality and sensory contrast through a carefully crafted tasting menu.</p>
-    <div><a href="https://vilalara.com/en/gastronomy/" class="btn-more" target="_blank">Reserve Your Table</a></div>
-    <p class="ev-note">Chef collaboration &nbsp;|&nbsp; Fine dining &nbsp;|&nbsp; Limited places</p>
-  </div>
-  <div class="ev-img">
-    <img src="https://vilalara.com/wp-content/uploads/2025/07/Pool-Loureiros-1024x683.webp" alt="Coral x Kabuki at Jardim dos Pinheiros" loading="lazy">
-  </div>
-</div>
-
-<div class="pipe-sep">|</div>
-
-<!-- 5. WHITE NIGHT -->
-<div class="ev-section">
-  <div class="ev-text">
-    <p class="ev-kicker">Guest Event &nbsp;|&nbsp; 22 July 2026</p>
-    <h2 class="ev-title">White Night</h2>
-    <span class="ev-script">by the Cliffs</span>
-    <p class="ev-venue">Vilalara Cliffs &nbsp;|&nbsp; Exclusive to hotel guests</p>
-    <p class="ev-desc">White attire, music, cocktails and carefully curated moments unfold on the cliffs in an atmosphere designed to celebrate the rhythm of summer by the sea. Light, luminous and timeless &mdash; an elegant summer celebration created exclusively for Vilalara guests.</p>
-    <div><a href="https://vilalara.com/en/book/" class="btn-more" target="_blank">Reserve Your Stay</a></div>
-    <p class="ev-note">Included in stay &nbsp;|&nbsp; Elegance of summer</p>
-  </div>
-  <div class="ev-img">
-    <img src="https://vilalara.com/wp-content/uploads/2025/11/occasions_pool.webp" alt="White Night by the Cliffs" loading="lazy">
-  </div>
-</div>
-
-<div class="pipe-sep">|</div>
-
-<!-- 6. ECLIPSE — FULL DARK -->
-<div class="full-dark">
-  <div class="full-dark-bg" style="background-image:url('https://vilalara.com/wp-content/uploads/2025/10/Room-Residence-Terrace-1-scaled.webp');background-position:center 35%;"></div>
-  <div class="full-dark-ov" style="background:linear-gradient(to right,rgba(var(--ov),.92) 38%,rgba(var(--ov),.45) 100%);"></div>
-  <div class="full-dark-content">
-    <span class="full-kicker">Signature Event &nbsp;|&nbsp; 12 August 2026</span>
-    <h2 class="full-title">The Last Eclipse</h2>
-    <span class="full-italic">of Our Lifetime</span>
-    <p class="full-desc">A unique celebration beneath one of the rarest natural phenomena of our generation. On the Vilalara cliffs, the night combines astronomy, music, gastronomy and immersive experiences under the solar eclipse &mdash; a symbolic moment suspended between time, nature and memory.</p>
-    <a href="https://vilalara.com/en/book/" class="btn-light" target="_blank">Reserve Your Stay</a>
-    <span class="full-footnote">Once in a lifetime &nbsp;|&nbsp; Very limited places &nbsp;|&nbsp; 60th Anniversary</span>
-  </div>
-</div>
-
-<div class="pipe-sep">|</div>
-
-<!-- GASTRONOMY WEEK -->
-<div class="gastro-wrap">
-  <div class="gastro-inner">
-    <div class="gastro-header">
-      <p class="band-kicker" style="margin-bottom:1rem;">Gastronomy Month &nbsp;|&nbsp; September 2026</p>
-      <h2 class="band-title">A Week</h2>
-      <span class="band-italic" style="margin-bottom:1.25rem;display:block;">of Flavours</span>
-      <p class="band-body">Four nights, four restaurants, four chef collaborations. The gastronomic season closes with a collective celebration at Pra&ccedil;a das Rosas.</p>
-    </div>
-    <div class="gastro-grid">
-      <div class="g-card">
-        <span class="g-card-date">4 September &nbsp;|&nbsp; Friday</span>
-        <h3 class="g-card-title">Coral Atlantic Encounters</h3>
-        <p class="g-card-chefs">Chef Diogo Pereira &times; Rita Magro</p>
-        <span class="g-card-place">Coral Restaurant</span>
-        <div style="margin-top:1.5rem;"><a href="https://vilalara.com/en/gastronomy/" class="btn-more" target="_blank" style="font-size:.54rem;padding:.5rem 1rem;">Reserve</a></div>
-      </div>
-      <div class="g-card">
-        <span class="g-card-date">5 September &nbsp;|&nbsp; Saturday</span>
-        <h3 class="g-card-title">Fire &amp; Origins</h3>
-        <p class="g-card-chefs">Telmo Pires &times; Alexandre Silva</p>
-        <span class="g-card-place">Ra&iacute;zes Restaurant</span>
-        <div style="margin-top:1.5rem;"><a href="https://vilalara.com/en/gastronomy/" class="btn-more" target="_blank" style="font-size:.54rem;padding:.5rem 1rem;">Reserve</a></div>
-      </div>
-      <div class="g-card">
-        <span class="g-card-date">7 September &nbsp;|&nbsp; Sunday</span>
-        <h3 class="g-card-title">Mediterranean Encounters</h3>
-        <p class="g-card-chefs">Ricardo &times; Stefano Bulla</p>
-        <span class="g-card-place">Trattoria Pantaleone</span>
-        <div style="margin-top:1.5rem;"><a href="https://vilalara.com/en/gastronomy/" class="btn-more" target="_blank" style="font-size:.54rem;padding:.5rem 1rem;">Reserve</a></div>
-      </div>
-      <div class="g-card">
-        <span class="g-card-date">8 September &nbsp;|&nbsp; Monday</span>
-        <h3 class="g-card-title">Closing Celebration</h3>
-        <p class="g-card-chefs">Diogo &nbsp;|&nbsp; Telmo &nbsp;|&nbsp; Ricardo &nbsp;|&nbsp; Louis Anjos</p>
-        <span class="g-card-place">Pra&ccedil;a das Rosas</span>
-        <div style="margin-top:1.5rem;"><a href="https://vilalara.com/en/gastronomy/" class="btn-more" target="_blank" style="font-size:.54rem;padding:.5rem 1rem;">Reserve</a></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="pipe-sep">|</div>
-
-<!-- 7. THALASSO LEGACY WEEK — FULL DARK right-aligned -->
-<div class="full-dark right">
-  <div class="full-dark-bg" style="background-image:url('https://vilalara.com/wp-content/uploads/2025/07/Other-Spa-Pool-1-scaled.webp');background-position:center 40%;"></div>
-  <div class="full-dark-ov" style="background:linear-gradient(to left,rgba(var(--ov),.92) 38%,rgba(var(--ov),.42) 100%);"></div>
-  <div class="full-dark-content" style="margin-left:auto;">
-    <span class="full-kicker">Wellness &nbsp;|&nbsp; 21&ndash;28 September 2026</span>
-    <h2 class="full-title">Thalasso Therapy</h2>
-    <span class="full-italic">Legacy Week</span>
-    <p class="full-desc">A week dedicated to Vilalara&rsquo;s wellness legacy and its historic connection to thalassotherapy. Special residencies, exclusive treatments and wellbeing rituals designed to reconnect with balance, longevity and the original wellness philosophy that has defined Vilalara for six decades.</p>
-    <a href="https://vilalara.com/en/wellness/" class="btn-light" target="_blank">Reserve Wellness Programme</a>
-    <span class="full-footnote">7 nights &nbsp;|&nbsp; 60 years of healing &nbsp;|&nbsp; Very limited capacity</span>
-  </div>
-</div>
-
-<div class="pipe-sep">|</div>
-
-<!-- 8. LEGACY CELEBRATION -->
-<div class="ev-section">
-  <div class="ev-text">
-    <p class="ev-kicker">Institutional &nbsp;|&nbsp; 8 October 2026</p>
-    <h2 class="ev-title">Vilalara 60 Years</h2>
-    <span class="ev-script">Legacy Celebration</span>
-    <p class="ev-venue">Vilalara Grand Hotel &nbsp;|&nbsp; By Invitation</p>
-    <p class="ev-desc">An elegant evening dedicated to celebrating six decades of history, hospitality and legacy, bringing together owners, strategic partners, tourism bodies and institutional figures connected to the history and future of Vilalara.</p>
-    <div><a href="https://vilalara.com/en/" class="btn-more" target="_blank">More Information</a></div>
-    <p class="ev-note">By invitation &nbsp;|&nbsp; Official closing of the anniversary season</p>
-  </div>
-  <div class="ev-img">
-    <img src="https://vilalara.com/wp-content/uploads/2025/11/occasions_meetings.webp" alt="Legacy Celebration" loading="lazy">
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="footer-inner">
+<div id="app">
+<!-- HOME -->
+<div class="pg on" id="p-home">
+<div class="hero">
+  <div class="hl">
+    <div class="hbg">V</div>
     <div>
-      <div class="footer-logo">
-        <img src="https://vilalara.com/wp-content/uploads/2026/04/cropped-cropped-LOGO-DEFINTIVO-1-scaled-1.png" alt="Vilalara Grand Hotel Algarve">
+      <div class="hey">Vilalara Grand Hotel Algarve · Est. 1966</div>
+      <h1 class="ht">Growth<br><em>Marketing</em><br>Plan 2026–31</h1>
+      <div class="hdiv"></div>
+      <p class="hx">Plano estratégico de crescimento com foco no canal direto, mercados prioritários, optimização de revenue por hóspede e posicionamento de marca premium.</p>
+    </div>
+    <div class="hst">
+      <div class="hsi"><div class="hsv">€10.56M</div><div class="hsl">Revenue 2025 · real</div></div>
+      <div class="hsi"><div class="hsv">€11.94M</div><div class="hsl">Budget 2026</div></div>
+      <div class="hsi"><div class="hsv">€16M+</div><div class="hsl">Meta 2031</div></div>
+    </div>
+  </div>
+  <div class="hr">
+    <div class="sl">Budget 2026 vs OTB — 4 Maio</div>
+    <div class="kg k2" style="margin-top:10px">
+      <div class="kc G"><div class="kl">Budget 2026</div><div class="kv">€11.941.356</div><div class="kd">24.366 rm nts · ADR €490,08</div></div>
+      <div class="kc G"><div class="kl">Canal Direto Budget</div><div class="kv">€7.500.049</div><div class="kd">14.069 rm nts · ADR €533,09</div></div>
+      <div class="kc R"><div class="kl">OTB 4 Maio</div><div class="kv">€7.207.373</div><div class="kd">16.048 rm nts · ADR €449 (−€41 vs budget)</div></div>
+      <div class="kc R"><div class="kl">Gap para Budget</div><div class="kv">€4.734K</div><div class="kd">8.318 rm nts · 39,6% do target</div></div>
+    </div>
+    <div class="phs" style="margin-top:22px">
+      <div class="phi cur" data-yr="yr26"><div class="phn">26</div><div class="phl">Execução</div></div>
+      <div class="phi" data-yr="yr27"><div class="phn">27</div><div class="phl">Fundação</div></div>
+      <div class="phi" data-yr="yr28"><div class="phn">28</div><div class="phl">Escala</div></div>
+      <div class="phi" data-yr="yr29"><div class="phn">29</div><div class="phl">Premium</div></div>
+      <div class="phi" data-yr="yr31"><div class="phn">31</div><div class="phl">Exlibris</div></div>
+    </div>
+    <div class="sl" style="margin-top:22px">Eixos do plano</div>
+    <div class="kg k2" style="gap:7px;margin-top:8px">
+      <div class="cal G" style="margin:0"><div class="ct">Canal Direto — meta 65%</div><div class="cb">De 61,5% para 65% em 5 anos. Cada ponto percentual vale ~€130K de margem anual.</div></div>
+      <div class="cal G" style="margin:0"><div class="ct">Google Ads — ROAS 22,7×</div><div class="cb">Top 1% hotelaria de luxo europeia. Escalar com estrutura e mercados certos.</div></div>
+      <div class="cal G" style="margin:0"><div class="ct">F&B — 6 Outlets como destinos</div><div class="cb">Coral · Raízes · Gaivotas · A-Costa · Vento · Trattoria Pantaleone</div></div>
+      <div class="cal G" style="margin:0"><div class="ct">Forbes ★ 2028 · LHW 2030</div><div class="cb">Certificações que abrem distribuição premium global e elevam o ADR.</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- DIAGNÓSTICO -->
+<div class="pg" id="p-diag">
+<div class="ph" data-bg="Diagnóstico">
+  <div class="pey">P&L · OTB · STR · Feeder Markets</div>
+  <h2 class="pt">Diagnóstico <em>Estratégico</em></h2>
+  <p class="px">Dados reais confirmados: 2025 Final €10.555.947 · Budget 2026 €11.941.356 · OTB 4 Maio €7.207.373. STR vs Comp Set. Feeder markets Nov–Abr.</p>
+  <div class="prl"></div>
+</div>
+<div class="pb">
+  <div class="sl">Evolução — dados confirmados</div>
+  <div class="tw"><table>
+    <thead><tr><th>Ano</th><th>Revenue</th><th>ADR</th><th>Rm Nts</th><th>Direto €</th><th>% Direto</th><th>ADR Direto</th><th>Res. Azora ADR</th></tr></thead>
+    <tbody>
+      <tr><td>2024</td><td>€10.263.538</td><td>€449,52</td><td>22.832</td><td>€6.093.556</td><td>59,4%</td><td>€496,71</td><td>€991,99</td></tr>
+      <tr class="bo"><td>2025</td><td>€10.555.947</td><td>€491,13</td><td>21.493</td><td>€6.488.990</td><td>61,5%</td><td>€528,51</td><td>€1.047,05</td></tr>
+      <tr class="rd"><td>2026 Budget</td><td>€11.941.356</td><td>€490,08</td><td>24.366</td><td>€7.500.049</td><td>62,8%</td><td>€533,09</td><td>€1.026,90</td></tr>
+      <tr class="go"><td>OTB 4 Mai</td><td>€7.207.373*</td><td>€449,11</td><td>16.048*</td><td>€3.817.512*</td><td>47,6%*</td><td>€499,41</td><td>€1.023,56</td></tr>
+    </tbody>
+  </table></div>
+  <p style="font-size:9.5px;color:var(--i4);margin-top:3px">*OTB parcial — faltam 8.318 rm nts e €4.734K para fechar o budget</p>
+
+  <hr class="rule gold">
+  <div class="kg k2" style="gap:20px">
+    <div>
+      <div class="sl">P&L Março 2026 — linha a linha</div>
+      <div class="kg k2">
+        <div class="kc R"><div class="kl">Revenue Total</div><div class="kv dn">−5,8%</div><div class="kd">€581.412 vs Budget €617.070</div></div>
+        <div class="kc E"><div class="kl">Ocupação</div><div class="kv up">46,4%</div><div class="kd">vs Budget 42,3% (+4,1pp) ✓</div></div>
+        <div class="kc R"><div class="kl">ADR Março</div><div class="kv dn">€178,22</div><div class="kd">vs Budget €204,84 (−13%)</div></div>
+        <div class="kc R"><div class="kl">RevPAR</div><div class="kv dn">€77,50</div><div class="kd">vs Budget €93,40 (−17%)</div></div>
+        <div class="kc E"><div class="kl">Breakfast Board</div><div class="kv up">+10,9%</div><div class="kd">€76.207 vs Budget €68.713 ✓</div></div>
+        <div class="kc R"><div class="kl">F&B Restaurantes</div><div class="kv dn">−16,8%</div><div class="kd">€116.222 vs Budget €139.754</div></div>
+        <div class="kc R"><div class="kl">Spa &amp; Thalasso</div><div class="kv dn">−14,1%</div><div class="kd">€42.922 vs Budget €49.980</div></div>
+        <div class="kc R"><div class="kl">ODD &amp; Experiências</div><div class="kv dn">−55%</div><div class="kd">€7.210 vs Budget €16.008</div></div>
       </div>
-      <p class="footer-tagline">Est. 1966 &nbsp;|&nbsp; Algarve, Portugal<br>60 Anos de Excel&ecirc;ncia</p>
+      <div class="ins" style="margin-top:12px"><div class="inh">Leitura</div><ul class="inl">
+        <li>ADR em Março (€178 vs Budget €205): o gap de revenue não vem de falta de ocupação — vem de preço</li>
+        <li>Breakfast Board acima do budget porque é pré-reservado: o modelo a replicar em F&B e experiências</li>
+        <li>ODD e Spa em gap por ausência de comunicação pré-estadia estruturada — não por falta de produto</li>
+      </ul></div>
     </div>
     <div>
-      <p class="footer-col-title">The Hotel</p>
-      <ul class="footer-col-links">
-        <li><a href="https://vilalara.com/en/our-heritage/">Our Heritage</a></li>
-        <li><a href="https://vilalara.com/en/suites-residences/">Suites &amp; Residences</a></li>
-        <li><a href="https://vilalara.com/en/wellness/">Wellness &amp; Spa</a></li>
-        <li><a href="https://vilalara.com/en/experiences/">Experiences</a></li>
-        <li><a href="https://vilalara.com/en/occasions/">Occasions</a></li>
-      </ul>
-    </div>
-    <div>
-      <p class="footer-col-title">Gastronomy</p>
-      <ul class="footer-col-links">
-        <li><a href="https://vilalara.com/en/restaurants/coral-restaurant/">Coral &Eacute;den do Mar</a></li>
-        <li><a href="https://vilalara.com/en/restaurants/a-costa/">A-Costa Mar e Brasas</a></li>
-        <li><a href="https://vilalara.com/en/restaurants/trattoria-pantaleone/">Trattoria Pantaleone</a></li>
-        <li><a href="https://vilalara.com/en/restaurants/raizes/">Ra&iacute;zes Horta da Terra</a></li>
-        <li><a href="https://vilalara.com/en/restaurants/gaivotas/">Gaivotas</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">&copy; 2026 Vilalara Grand Hotel Algarve &nbsp;|&nbsp; All rights reserved</p>
-    <div class="footer-links-row">
-      <a href="https://vilalara.com/en/contacts/">Contacts</a>
-      <a href="https://vilalara.com/en/book/" target="_blank">Book Now</a>
-      <a href="https://vilalara.com/en/">vilalara.com</a>
+      <div class="sl">STR 2025 — Vilalara vs Comp Set (5 hotéis)</div>
+      <div class="gauges">
+        <div class="gi"><div class="gv">84,2%</div><div class="gl2">Occ. Julho</div><div class="grk bad">5.º de 5</div></div>
+        <div class="gi"><div class="gv">85,1%</div><div class="gl2">Occ. Agosto</div><div class="grk bad">5.º de 5</div></div>
+        <div class="gi"><div class="gv">77,8%</div><div class="gl2">Occ. Set.</div><div class="grk bad">5.º de 5</div></div>
+        <div class="gi"><div class="gv">€680</div><div class="gl2">ADR Agosto</div><div class="grk good">Acima comp €644</div></div>
+        <div class="gi"><div class="gv">€637</div><div class="gl2">ADR Julho</div><div class="grk ok">3.º de 5</div></div>
+      </div>
+      <div class="ins" style="margin-top:10px"><div class="inh">Implicação</div><ul class="inl">
+        <li>ADR Agosto €680 supera o comp set (€644, ARI 105,6) — o produto justifica o preço</li>
+        <li>Ocupação em 5.º de 5 nos 3 meses de pico: gap de 200–300 rm nts/mês = €140–200K/mês</li>
+        <li>A alavanca não é redução de preço — é distribuição mais ampla e lead time mais longo</li>
+      </ul></div>
+      <div class="sl" style="margin-top:18px">OTB por canal (4 Maio)</div>
+      <div class="tw"><table>
+        <thead><tr><th>Canal</th><th>OTB Rn</th><th>BGT Rn</th><th>% BGT</th><th>Gap €</th></tr></thead>
+        <tbody>
+          <tr class="bo"><td>TOTAL</td><td>16.048</td><td>24.366</td><td class="dn">65,9%</td><td class="dn">−€4.733.983</td></tr>
+          <tr class="rd"><td>DIRETO</td><td>7.644</td><td>14.069</td><td class="dn">54,3%</td><td class="dn">−€3.682.537</td></tr>
+          <tr><td>Online OTA</td><td>4.306</td><td>4.502</td><td>95,6%</td><td class="dn">−€218.263</td></tr>
+          <tr><td>Offline</td><td>3.673</td><td>5.294</td><td class="dn">69,4%</td><td class="dn">−€812.723</td></tr>
+          <tr class="go"><td>Residences Direto</td><td>694</td><td>1.343</td><td class="dn">51,7%</td><td class="dn">−€646.770</td></tr>
+        </tbody>
+      </table></div>
     </div>
   </div>
-</footer>
+  <hr class="rule gold">
+  <div class="sl">Top feeder markets — Acum. Nov–Abr 2025/26</div>
+  <div class="tw"><table>
+    <thead><tr><th>Mercado</th><th>2025 rn</th><th>2026 rn</th><th>Δ YoY</th><th>Papel</th></tr></thead>
+    <tbody>
+      <tr class="go"><td>🇺🇸 EUA</td><td>1.905</td><td>2.364</td><td class="up">+24,1%</td><td>Motor principal · CPA ~€55 · ADR ~€600</td></tr>
+      <tr class="go"><td>🇬🇧 UK</td><td>793</td><td>1.696</td><td class="up">+113,9%</td><td>Crescimento disruptivo · ampliar investimento</td></tr>
+      <tr><td>🇩🇪 Alemanha</td><td>681</td><td>1.077</td><td class="up">+58,1%</td><td>Wellness fit · Thalasso messaging</td></tr>
+      <tr><td>🇨🇭 Suíça</td><td>697</td><td>812</td><td class="up">+16,5%</td><td>Alta qualidade · Residences + Thalasso</td></tr>
+      <tr class="go"><td>🇨🇦 Canadá</td><td>117</td><td>379</td><td class="up">+223,9%</td><td>Emergente · CPA similar EUA · escalar</td></tr>
+      <tr><td>🇫🇷 França</td><td>262</td><td>395</td><td class="up">+50,8%</td><td>Gastronomia · manter</td></tr>
+      <tr><td>🇳🇱 Países Baixos</td><td>187</td><td>403</td><td class="up">+115,5%</td><td>Crescimento inesperado · investigar</td></tr>
+      <tr class="rd"><td>🇵🇹 Portugal</td><td>302</td><td>439</td><td class="up">+45%</td><td>CPA ~€388 · margem ≈€0 · brand search only</td></tr>
+    </tbody>
+  </table></div>
+</div>
+</div>
+
+<!-- CANAL DIRETO -->
+<div class="pg" id="p-direto">
+<div class="dk-section">
+  <div class="pey">Distribuição · Margem · Dados · Pricing</div>
+  <h2 class="pt" style="color:var(--W)">Canal <em>Direto</em></h2>
+  <p class="px" style="color:rgba(227,222,207,.44)">De 61,5% para 65% de mix direto em 5 anos. Cada ponto percentual de migração OTA→direto vale ~€130K de margem anual. Meta 2026: fechar o gap de €3.682K.</p>
+  <div style="width:34px;height:1px;background:var(--H2);margin:13px 0"></div>
+</div>
+<div class="dk-section dk" style="padding-top:8px">
+  <div class="kg k4">
+    <div class="kdc G"><div class="kl">ADR Direto 2025</div><div class="kv">€528,51</div><div class="kd">+26% vs OTA · margem máxima</div></div>
+    <div class="kdc G"><div class="kl">ADR Direto Budget 26</div><div class="kv">€533,09</div><div class="kd">Residences direto: €1.110</div></div>
+    <div class="kdc"><div class="kl">OTB Direto 4 Mai</div><div class="kv">€3.817.512</div><div class="kd">7.644 rn · gap €3.682K vs budget</div></div>
+    <div class="kdc"><div class="kl">Gap Direto</div><div class="kv">6.425 rn</div><div class="kd">54,3% do budget direto por fechar</div></div>
+  </div>
+  <hr class="dk">
+  <div class="sl">Impacto financeiro da evolução do canal direto</div>
+  <div class="tw" style="margin-top:10px"><table class="dktable">
+    <thead><tr><th>Cenário</th><th>Revenue</th><th>% Direto</th><th>Comissões OTA est.</th><th>Margem extra vs 2025</th></tr></thead>
+    <tbody>
+      <tr class="bo"><td>2025 baseline</td><td>€10.555.947</td><td>61,5%</td><td>~€740K</td><td>—</td></tr>
+      <tr><td>2026 budget</td><td>€11.941.356</td><td>62,8%</td><td>~€810K</td><td class="up">+€160K</td></tr>
+      <tr><td>2028 target</td><td>€14M</td><td>63%</td><td>~€885K</td><td class="up">+€540K</td></tr>
+      <tr class="go"><td>2031 meta</td><td>€16M</td><td>65%</td><td>~€960K</td><td class="up">+€1.400K anual</td></tr>
+    </tbody>
+  </table></div>
+  <hr class="dk">
+  <div class="sl">Alavancas de crescimento do canal direto</div>
+  <div class="al dk" style="margin-top:10px">
+    <div class="ai dk"><div class="an">01</div><div class="ab"><div class="at">Booking engine — corrigir erros JS antes de Junho</div><div class="ax">81% abandono entre Add-to-Cart e compra. Erros JS em 17,69% das sessões. LCP 4,1s (benchmark &lt;2,5s). Mobile −7,3pp vs desktop. Impacto estimado da correcção: +€80–120K revenue direto/ano. A janela critica são Julho e Agosto — cada semana de atraso tem custo directo.</div><div class="am"><span class="pr cr">Esta Semana</span><span class="tag w">CRO</span></div></div></div>
+    <div class="ai dk"><div class="an">02</div><div class="ab"><div class="at">Residences Azora — campanha dedicada urgente</div><div class="ax">ADR direto €1.110, 694 OTB vs 1.343 budget (52%). Sem uma campanha dedicada. Budget sugerido: €1.200–1.500/mês em Google Ads (UK, PT, CH) com landing page própria. ROAS esperado ≥20× dado o ADR do produto.</div><div class="am"><span class="pr cr">Urgente</span><span class="tag w">Gap €647K</span></div></div></div>
+    <div class="ai dk"><div class="an">03</div><div class="ab"><div class="at">Early bird com benefício de experiência — nunca desconto de preço</div><div class="ax">Substituir o desconto percentual por um benefício tangível: tratamento Thalasso (€80 custo), jantar no Coral ou Raízes (€65), barco George Ansley. O hóspede antecipa, o hotel mantém o ADR. Com 1.000 reservas early bird anuais, a diferença vs desconto de 15% vale €70–90K de ADR protegido.</div><div class="am"><span class="pr hi">Alta</span><span class="tag w">ADR</span></div></div></div>
+    <div class="ai dk"><div class="an">04</div><div class="ab"><div class="at">Exit-intent no booking engine com oferta de valor</div><div class="ax">Quando o utilizador inicia o abandono: proposta de benefício de experiência (Welcome Drink no Vento, acesso ao Thalasso). Nunca desconto — evita criar o padrão de abandono para obter desconto. Hotéis que implementam reportam +8–15% de conversão incremental.</div><div class="am"><span class="pr hi">Alta</span><span class="tag w">Conversão</span></div></div></div>
+  </div>
+</div>
+</div>
+
+<!-- MERCADOS -->
+<div class="pg" id="p-merc">
+<div class="ph" data-bg="Mercados">
+  <div class="pey">Prioritários · Suporte · Reduzir · CPA vs ADR vs Margem</div>
+  <h2 class="pt">Estratégia de <em>Mercados</em></h2>
+  <p class="px">Cada mercado com papel estratégico definido e lógica de alocação de budget baseada na rentabilidade real.</p>
+  <div class="prl"></div>
+</div>
+<div class="pb">
+  <div class="tabs">
+    <button class="tab on" data-tab="tm-pri">Prioritários</button>
+    <button class="tab" data-tab="tm-sup">Suporte</button>
+    <button class="tab" data-tab="tm-red">Reduzir</button>
+    <button class="tab" data-tab="tm-mat">Matriz</button>
+  </div>
+  <div id="tm-pri" class="tp on">
+    <div class="al">
+      <div class="ai"><div class="an">🇺🇸</div><div class="ab"><div class="at">EUA — Motor Principal · CPA ~€55 · ADR ~€600</div><div class="ax">2.364 rn YTD (+24,1%). Mercado mais eficiente em CPA. Hóspedes com maior lead time, estadias mais longas, menor sensibilidade ao preço. Escalar Google Search Brand + Non-brand. Virtuso e Amex Centurion a partir de 2028 (pós Forbes ★).</div><div class="am"><span class="pr hi">Escalar 2026–28</span><span class="tag">Google Search</span><span class="tag">Virtuoso 2028</span></div></div></div>
+      <div class="ai"><div class="an">🇬🇧</div><div class="ab"><div class="at">UK — Crescimento Disruptivo · +113,9% YoY</div><div class="ax">De 793 para 1.696 rn acumuladas. O segundo mercado mais importante em aceleração sem investimento proporcional. CPA ~€161, ADR ~€450, margem €289. Volume potencial significativo.</div><div class="am"><span class="pr cr">Ampliar Agora</span><span class="tag">Brand Search</span><span class="tag">Agentes Luxury 2027</span></div></div></div>
+      <div class="ai"><div class="an">🇨🇦</div><div class="ab"><div class="at">Canadá — Emergente · +223,9% · CPA similar EUA</div><div class="ax">De 117 para 379 rn. Toronto, Vancouver e Montreal com perfil de alto rendimento. CPA comparável ao EUA. Sem campanha dedicada em 2026 — gap imediato.</div><div class="am"><span class="pr hi">Campanha Dedicada</span><span class="tag">Brand Search CA</span></div></div></div>
+    </div>
+  </div>
+  <div id="tm-sup" class="tp">
+    <div class="al">
+      <div class="ai"><div class="an">🇩🇪</div><div class="ab"><div class="at">Alemanha · +58,1% · Wellness e Thalasso</div><div class="ax">1.077 rn YTD. Fit natural ao produto Thalasso. Messaging dedicado ao Thalasso Legacy Programme (2027) pode aumentar o ADR médio deste segmento. Manter e aprofundar.</div><div class="am"><span class="pr md">Manter</span><span class="tag">Thalasso messaging</span></div></div></div>
+      <div class="ai"><div class="an">🇨🇭</div><div class="ab"><div class="at">Suíça · +16,5% · Residences + Thalasso</div><div class="ax">812 rn YTD com ADR elevado. Hóspedes suíços têm padrão próximo do alemão com maior disposição para Residences (ADR €1.110+). Manter com campanhas Residences dedicadas.</div><div class="am"><span class="pr md">Manter</span><span class="tag">Residences</span></div></div></div>
+      <div class="ai"><div class="an">🇫🇷</div><div class="ab"><div class="at">França · +50,8% · Gastronomia</div><div class="ax">395 rn YTD. Ângulo de captação: Chronicle Dinners, os 6 outlets e o conceito farm-to-table do Raízes. Messaging diferenciado.</div><div class="am"><span class="pr md">Manter</span><span class="tag">Gastronomia</span></div></div></div>
+      <div class="ai"><div class="an">🇳🇱</div><div class="ab"><div class="at">Países Baixos · +115,5% · Investigar</div><div class="ax">403 rn YTD, crescimento expressivo sem investimento dedicado. CPC mais baixo que UK. Testar campanha brand em 2027.</div><div class="am"><span class="pr md">Testar 2027</span><span class="tag">Brand NL</span></div></div></div>
+    </div>
+  </div>
+  <div id="tm-red" class="tp">
+    <div class="cal R"><div class="ct">Portugal — CPA €388, margem ≈€0</div><div class="cb">€1.000 em Portugal geram ~2,6 reservas com margem próxima de zero (CPA €388, ADR ~€240, comissão 18%). O mesmo €1.000 nos EUA gera ~18 reservas com margem de €9K+. Acção: reduzir Portugal para brand search puro (€800/mês) e realocar a diferença para EUA, UK e Canadá. Impacto estimado: +€150–250K de revenue incremental com o mesmo budget total.</div></div>
+    <div class="ins"><div class="inh">Portugal — papel residual correctamente dimensionado</div><ul class="inl">
+      <li>Brand search puro €800/mês: garante visibilidade para quem procura o hotel por nome</li>
+      <li>F&B e Spa: Google Ads local para captação de clientes externos nos 6 outlets — ROI completamente diferente</li>
+      <li>O mercado doméstico serve-se via F&B, Spa day-pass e eventos — não via campanhas de quartos</li>
+      <li>Budget libertado: €12–15K/ano para realocar para mercados de alta margem</li>
+    </ul></div>
+  </div>
+  <div id="tm-mat" class="tp">
+    <div class="tw"><table>
+      <thead><tr><th>Mercado</th><th>CPA Est.</th><th>ADR Est.</th><th>Margem/Res.</th><th>2026 YTD</th><th>2028 Target</th><th>2031 Target</th><th>Prioridade</th></tr></thead>
+      <tbody>
+        <tr class="go"><td>🇺🇸 EUA</td><td>~€55</td><td>~€600</td><td>€545+</td><td>2.364 rn</td><td>3.500 rn</td><td>5.000 rn</td><td>Escalar</td></tr>
+        <tr class="go"><td>🇬🇧 UK</td><td>~€161</td><td>~€450</td><td>€289</td><td>1.696 rn</td><td>2.500 rn</td><td>3.500 rn</td><td>Ampliar</td></tr>
+        <tr class="go"><td>🇨🇦 Canadá</td><td>~€70</td><td>~€580</td><td>€510+</td><td>379 rn</td><td>700 rn</td><td>1.200 rn</td><td>Campanha 2026</td></tr>
+        <tr><td>🇩🇪 Alemanha</td><td>~€120</td><td>~€480</td><td>€360</td><td>1.077 rn</td><td>1.500 rn</td><td>2.000 rn</td><td>Manter</td></tr>
+        <tr><td>🇨🇭 Suíça</td><td>~€115</td><td>~€500</td><td>€385</td><td>812 rn</td><td>1.000 rn</td><td>1.400 rn</td><td>Manter</td></tr>
+        <tr><td>🇫🇷 França</td><td>~€100</td><td>~€440</td><td>€340</td><td>395 rn</td><td>600 rn</td><td>900 rn</td><td>Manter</td></tr>
+        <tr><td>🇳🇱 NL</td><td>~€80</td><td>~€460</td><td>€380</td><td>403 rn</td><td>600 rn</td><td>900 rn</td><td>Testar 2027</td></tr>
+        <tr><td>🇦🇪 UAE/Golfo</td><td>—</td><td>~€650</td><td>€595</td><td>—</td><td>150 rn</td><td>500 rn</td><td>Entrada 2028</td></tr>
+        <tr class="rd"><td>🇵🇹 Portugal</td><td>~€388</td><td>~€240</td><td>≈€0</td><td>439 rn</td><td>300 rn</td><td>300 rn</td><td>Brand only €800/mês</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+</div>
+<!-- GOOGLE ADS -->
+<div class="pg" id="p-ads">
+<div class="dk-section">
+  <div class="pey">Performance · Budget · Estrutura · Prioridades</div>
+  <h2 class="pt" style="color:var(--W)">Google <em>Ads</em></h2>
+  <p class="px" style="color:rgba(227,222,207,.44)">ROAS 22,7× em Q1 2026. Dados reais de performance 1–8 Maio 2026 e Budget Pacing Abr–Mai. Estrutura, prioridades e lógica de investimento.</p>
+  <div style="width:34px;height:1px;background:var(--H2);margin:13px 0"></div>
+</div>
+<div class="dk-section dk" style="padding-top:8px">
+  <div class="sl">Performance Snapshot — 1 a 8 Maio 2026</div>
+  <div class="kg k4" style="margin-top:10px">
+    <div class="kdc"><div class="kl">Cliques</div><div class="kv">1.910</div><div class="kd">−16,6% vs período anterior</div></div>
+    <div class="kdc"><div class="kl">Impressões</div><div class="kv">10,02M</div><div class="kd">−12,3% vs período anterior</div></div>
+    <div class="kdc E"><div class="kl">CTR</div><div class="kv">19,02%</div><div class="kd">−4,9% · ainda muito acima da média</div></div>
+    <div class="kdc"><div class="kl">Avg. CPC</div><div class="kv">€1,31</div><div class="kd">+1,7% — CPC continua eficiente</div></div>
+    <div class="kdc"><div class="kl">Custo (8 dias)</div><div class="kv">€2.493</div><div class="kd">−15,2% vs período anterior</div></div>
+    <div class="kdc"><div class="kl">Conversões</div><div class="kv">171</div><div class="kd">−8,4% vs período anterior</div></div>
+    <div class="kdc E"><div class="kl">Conv. Value</div><div class="kv">€38.882</div><div class="kd">−40,9% · principal sinal de atenção</div></div>
+    <div class="kdc E"><div class="kl">Cost / Conv.</div><div class="kv">€14,59</div><div class="kd">−7,4% · custo por conversão melhorou</div></div>
+  </div>
+  <div class="cal D" style="margin-top:14px"><div class="ct">Conv. Value −40,9%: sinal de atenção — investigar origem</div><div class="cb">O volume de conversões baixou apenas −8,4% mas o valor gerado caiu −40,9%. Isto indica que as conversões actuais têm ticket médio significativamente mais baixo. Possíveis causas: mix de quartos (reservas de quartos base em vez de suites/residences), mercados com ADR mais baixo a converter mais, ou sazonalidade de Maio. Requere análise por segmento de campanha antes de ajustar budget.</div></div>
+
+  <hr class="dk">
+  <div class="sl">Budget Pacing — Abr 2026 a 7 Mai 2026</div>
+  <div class="kg k3">
+    <div class="kdc G"><div class="kl">YTD Cost (até 7 Mai)</div><div class="kv">€49.476,50</div><div class="kd">Custo acumulado 2026</div></div>
+    <div class="kdc"><div class="kl">Last 30 Days</div><div class="kv">€11.120,61</div><div class="kd">8 Abr – 7 Mai 2026</div></div>
+    <div class="kdc"><div class="kl">Last 7 Days</div><div class="kv">€2.413,56</div><div class="kd">1–7 Mai 2026</div></div>
+  </div>
+  <div class="tw" style="margin-top:12px"><table class="dktable">
+    <thead><tr><th>Mês</th><th>Custo Real</th><th>% do YTD</th><th>Observação</th></tr></thead>
+    <tbody>
+      <tr class="rd"><td>Março 2026</td><td>€20.904,31</td><td>42,3%</td><td>Overspend — 42% do YTD num único mês</td></tr>
+      <tr><td>Abril 2026</td><td>€11.205,17</td><td>22,6%</td><td>Normalização após Março</td></tr>
+      <tr class="go"><td>Maio 2026 (parcial)</td><td>€2.493,03</td><td>5,0%</td><td>8 dias · ritmo controlado</td></tr>
+    </tbody>
+  </table></div>
+  <div class="cal D" style="margin-top:8px"><div class="ct">Março representou 42% do custo YTD — acima das melhores práticas</div><div class="cb">Benchmark: nunca concentrar mais de 35–38% do budget trimestral num único mês. O overspend de Março distorce métricas e deixa menos budget para os meses de pico (Junho–Agosto). Implementar hard cap mensal e alerta automático quando o mês excede 38% do budget trimestral.</div></div>
+
+  <hr class="dk">
+  <div class="sl">Estrutura e prioridades de campanha</div>
+  <div class="tabs dtabs" style="margin-top:10px">
+    <button class="tab on" data-tab="ads-struct">Estrutura</button>
+    <button class="tab" data-tab="ads-pri">Prioridades Imediatas</button>
+    <button class="tab" data-tab="ads-cal">Calendário 2026</button>
+    <button class="tab" data-tab="ads-budget">Budget por Mercado</button>
+  </div>
+  <div id="ads-struct" class="tp on">
+    <div class="dins"><div class="inh">Princípio fundamental — Brand vs Non-Brand separados</div><ul class="inl">
+      <li>Brand: ROAS target 25–30× · budget contido · apenas para defender o nome vs concorrência</li>
+      <li>Non-Brand: ROAS target 8–12× · budget crescente para captar procura incremental</li>
+      <li>Residences: campanha autónoma com landing page própria · ROAS target ≥20×</li>
+      <li>A mistura de Brand e Non-Brand no mesmo grupo distorce o ROAS reportado e impede optimização cirúrgica</li>
+      <li>Portugal: brand search only €800/mês · sem campanhas de quartos</li>
+    </ul></div>
+  </div>
+  <div id="ads-pri" class="tp">
+    <div class="al dk">
+      <div class="ai dk"><div class="an">01</div><div class="ab"><div class="at">Campanha Eclipse 12 Agosto — abrir esta semana</div><div class="ax">Agosto OTB: 796 rn vs Budget 3.516 (23%). ADR OTB €766 — €47 ACIMA do budget (€719). A procura paga o preço; o gap é de visibilidade. Landing page dedicada + Search "eclipse algarve agosto 2026" + Meta EUA/UK. Budget extra: €2.500. A janela fecha em meados de Junho.</div><div class="am"><span class="pr cr">Esta Semana</span><span class="tag w">Gap €1.9M Agosto</span></div></div></div>
+      <div class="ai dk"><div class="an">02</div><div class="ab"><div class="at">Separar Brand vs Non-Brand em todas as campanhas</div><div class="ax">Implementação imediata no Google Ads. Brand com budget reduzido e ROAS target 25–30×. Non-brand com budget crescente para EUA, UK e Canadá. A separação permite escalar non-brand sem canibalizar as métricas de brand e torna o reporting mais rigoroso para a direcção.</div><div class="am"><span class="pr cr">Urgente</span><span class="tag w">Estrutura</span></div></div></div>
+      <div class="ai dk"><div class="an">03</div><div class="ab"><div class="at">Hard cap mensal — máximo 38% do budget trimestral</div><div class="ax">Março gastou €20.904 (42% do YTD). Implementar hard cap diário automático no Google Ads + alerta semanal de pacing. Dashboard de budget partilhado com a direcção. O overspend de pré-época reduz disponibilidade para os meses de maior conversão.</div><div class="am"><span class="pr hi">Alta</span><span class="tag w">Controlo</span></div></div></div>
+      <div class="ai dk"><div class="an">04</div><div class="ab"><div class="at">Investigar queda de Conv. Value −40,9%</div><div class="ax">Conv. Value caiu −40,9% mas conversões apenas −8,4%. Analisar: mix de campanhas que converteu (brand vs non-brand), mercado de origem das conversões, tipo de quarto reservado. Sem esta análise, ajustes de budget são feitos às cegas.</div><div class="am"><span class="pr hi">Alta</span><span class="tag w">Analytics</span></div></div></div>
+    </div>
+  </div>
+  <div id="ads-cal" class="tp">
+    <div class="tw" style="margin-top:6px"><table class="dktable">
+      <thead><tr><th>Período</th><th>Campanha / Argumento</th><th>Canal</th><th>Mercado</th><th>Objectivo</th></tr></thead>
+      <tbody>
+        <tr class="go"><td>Mai–Jun</td><td>Eclipse 12 Agosto + 60 Anos Vilalara</td><td>Search + Meta</td><td>EUA · UK</td><td>Fechar Agosto (gap €1.9M)</td></tr>
+        <tr><td>Mai</td><td>60 Years on the Cliffs (23 Mai)</td><td>Meta + Search</td><td>UK · FR · DE</td><td>Awareness + Junho</td></tr>
+        <tr><td>Jun</td><td>White Night by the Cliffs (5 Jun)</td><td>Meta</td><td>PT · ES</td><td>Trade + local</td></tr>
+        <tr><td>Jun–Jul</td><td>Residences Azora — campanha dedicada</td><td>Search dedicado</td><td>UK · PT · CH</td><td>Gap €647K Residences</td></tr>
+        <tr><td>Jul</td><td>Chronicle Dinners Julho (11 Jul)</td><td>Search + Email</td><td>UK · DE · FR</td><td>F&B awareness</td></tr>
+        <tr><td>Set</td><td>Chronicle Dinners (4, 5, 7, 8 Set)</td><td>Meta + Email</td><td>UK · DE · FR</td><td>Gastronomia + Out/Nov</td></tr>
+        <tr><td>Set</td><td>Thalasso Legacy Week (21–28 Set)</td><td>Search Wellness</td><td>DE · CH · UK</td><td>Spa + shoulder</td></tr>
+        <tr><td>Out–Nov</td><td>Shoulder push + MICE + Weddings pilot</td><td>Search + Meta</td><td>UAE · EUA</td><td>Preencher Oct–Nov</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div id="ads-budget" class="tp">
+    <div class="tw" style="margin-top:6px"><table class="dktable">
+      <thead><tr><th>Mercado / Campanha</th><th>Budget Rec. 2026</th><th>ROAS Target</th><th>Canal</th><th>Objectivo</th></tr></thead>
+      <tbody>
+        <tr class="go"><td>EUA</td><td>€30–35K/ano</td><td>20×+</td><td>Search Brand + Non-brand</td><td>Volume + conversão</td></tr>
+        <tr class="go"><td>UK</td><td>€20–25K/ano</td><td>15×+</td><td>Search Brand + Meta</td><td>Ampliar volume</td></tr>
+        <tr class="go"><td>Canadá</td><td>€8–10K/ano</td><td>18×+</td><td>Search Brand (nova)</td><td>Validar e escalar</td></tr>
+        <tr><td>DE / CH</td><td>€18–22K/ano</td><td>12×+</td><td>Search + Meta Wellness</td><td>Thalasso positioning</td></tr>
+        <tr><td>FR</td><td>€8–10K/ano</td><td>12×+</td><td>Search + Meta Gastro</td><td>Gastronomia messaging</td></tr>
+        <tr><td>Residences</td><td>€14–18K/ano</td><td>20×+</td><td>Search dedicado</td><td>ADR €1.110 · gap €647K</td></tr>
+        <tr><td>Eclipse Agosto</td><td>€2.500 extra</td><td>15×+</td><td>Search + Meta EUA/UK</td><td>Gap €1.9M Agosto</td></tr>
+        <tr class="rd"><td>Portugal</td><td>€800/mês</td><td>—</td><td>Brand Search only</td><td>Visibilidade mínima</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+</div>
+
+<!-- CONVERSÃO & CRM -->
+<div class="pg" id="p-conv">
+<div class="ph" data-bg="Conversão">
+  <div class="pey">Booking Engine · Funil · CRM · Automações · Fidelização</div>
+  <h2 class="pt">Conversão <em>&amp; CRM</em></h2>
+  <p class="px">Da visita ao site até ao hóspede recorrente. Booking engine, automações de ciclo completo e estrutura de fidelização.</p>
+  <div class="prl"></div>
+</div>
+<div class="pb">
+  <div class="tabs">
+    <button class="tab on" data-tab="cv-engine">Booking Engine</button>
+    <button class="tab" data-tab="cv-auto">Automações</button>
+    <button class="tab" data-tab="cv-fid">Fidelização</button>
+  </div>
+  <div id="cv-engine" class="tp on">
+    <div class="kg k4">
+      <div class="kc R"><div class="kl">Abandono checkout</div><div class="kv dn">81%</div><div class="kd">Entre Add-to-Cart e compra</div></div>
+      <div class="kc R"><div class="kl">LCP</div><div class="kv dn">4,1s</div><div class="kd">Benchmark &lt;2,5s · lento</div></div>
+      <div class="kc R"><div class="kl">Mobile vs Desktop</div><div class="kv dn">−7,3pp</div><div class="kd">54,2% do tráfego é mobile</div></div>
+      <div class="kc R"><div class="kl">Sessões com Erro JS</div><div class="kv dn">17,69%</div><div class="kd">Bloqueia checkout em ~1/5 sessões</div></div>
+    </div>
+    <div class="al" style="margin-top:14px">
+      <div class="ai"><div class="an">01</div><div class="ab"><div class="at">Eliminar erros JS — correcção antes de Junho</div><div class="ax">O erro event.data.match é identificável e corrigível. Em 17,69% das sessões o checkout é interrompido. Prioridade absoluta: resolver antes de Junho para não perder o pico de procura para Julho/Agosto. Impacto estimado: +€80–120K revenue direto/ano.</div><div class="am"><span class="pr cr">Esta Semana</span></div></div></div>
+      <div class="ai"><div class="an">02</div><div class="ab"><div class="at">LCP 4,1s → &lt;2,5s — cada segundo custa conversão</div><div class="ax">Cada segundo adicional de carregamento reduz a taxa de conversão em ~7% (dados Google). Com LCP de 4,1s, o hotel perde ~11% de conversão só pela velocidade. Optimização de imagens, lazy loading e CDN são as alavancas prioritárias.</div><div class="am"><span class="pr cr">Urgente</span></div></div></div>
+      <div class="ai"><div class="an">03</div><div class="ab"><div class="at">Mobile-first do funil de checkout</div><div class="ax">54,2% do tráfego é mobile. Simplificar o formulário de checkout: menos campos por ecrã, botão Book Now sempre visível em scroll, Apple Pay / Google Pay habilitados. O delta de −7,3pp vs desktop representa um volume significativo de reservas não completadas.</div><div class="am"><span class="pr hi">Alta</span></div></div></div>
+      <div class="ai"><div class="an">04</div><div class="ab"><div class="at">Exit-intent com benefício de experiência</div><div class="ax">Quando o utilizador inicia o abandono: proposta de um benefício (Welcome Drink no Vento, acesso ao jardim Thalasso). Nunca desconto — cria o hábito de abandonar para obter desconto. Hotéis que implementam reportam +8–15% de conversão incremental sobre o funil actual.</div><div class="am"><span class="pr hi">Alta</span></div></div></div>
+    </div>
+  </div>
+  <div id="cv-auto" class="tp">
+    <div class="sl">Sequência automática — ciclo completo</div>
+    <div class="al">
+      <div class="ai"><div class="an">T−7</div><div class="ab"><div class="at">Email de antecipação — outlets, eventos, experiências</div><div class="ax">7 dias antes: evento da semana, os 6 outlets com disponibilidade e link de reserva, as 7 experiências com preço e disponibilidade real. Cada item com acção de reserva imediata. Target: +€18–25 de ancillary revenue por hóspede vs baseline.</div></div></div>
+      <div class="ai"><div class="an">T−3</div><div class="ab"><div class="at">Check-in online + preferências de personalização</div><div class="ax">Link de check-in online, horários de todos os serviços, nome do concierge, e uma questão de personalização que alimenta o CRM e informa o arrival ritual.</div></div></div>
+      <div class="ai"><div class="an">T−1</div><div class="ab"><div class="at">Email de chegada — prático e relevante</div><div class="ax">Meteorologia local, sugestão de roupa, horário de abertura do Coral e Raízes para jantar, e último upsell disponível: upgrade de quarto, slot de Spa, experiência de barco.</div></div></div>
+      <div class="ai"><div class="an">D+2</div><div class="ab"><div class="at">Mid-stay check — capturar insatisfação antes do check-out</div><div class="ax">SMS ou WhatsApp discreto: "Como está a correr a sua estadia?" Um hóspede insatisfeito contactado a tempo não escreve uma review negativa. Um hóspede satisfeito contactado escreve uma review positiva.</div></div></div>
+      <div class="ai"><div class="an">+48h</div><div class="ab"><div class="at">Post-stay — timing da memória emocional</div><div class="ax">A memória emocional de uma estadia está no pico às 48h após partida — não imediatamente. Email com: agradecimento personalizado, link de review Google/TripAdvisor, e proposta de retorno com benefício de experiência (nunca desconto de preço).</div></div></div>
+      <div class="ai"><div class="an">+30d</div><div class="ab"><div class="at">Newsletter editorial mensal — não email promocional</div><div class="ax">O evento do próximo mês, um prato em destaque de um dos 6 outlets, um tratamento Thalasso explicado, uma fotografia da falésia. Target: 38%+ de abertura (benchmark luxury: 28%).</div></div></div>
+    </div>
+  </div>
+  <div id="cv-fid" class="tp">
+    <div class="cal G"><div class="ct">Hóspede recorrente: custo de aquisição zero, ADR 12–18% superior</div><div class="cb">Dados Bain & Company para hotelaria de luxo. Em 2025, ~15% dos hóspedes são recorrentes. Target 2031: 30%+. A diferença entre estes dois cenários, em revenue e margem, é substancial.</div></div>
+    <div class="al" style="margin-top:12px">
+      <div class="ai"><div class="an">01</div><div class="ab"><div class="at">Programa de recorrentes — sem pontos, sem plástico</div><div class="ax">Um hóspede com 3+ visitas recebe: carta manuscrita do Director na chegada com referência à visita anterior, upgrade automático sem pedido, reconhecimento pelo nome por todos os colaboradores (briefing diário via CRM). Experiência — não programa de fidelização genérico.</div><div class="am"><span class="pr hi">Alta</span></div></div></div>
+      <div class="ai"><div class="an">02</div><div class="ab"><div class="at">CRM Preditivo com LTV Scoring — 2027</div><div class="ax">Score de propensão à recompra (0–100) para cada contacto. Campanhas enviadas às pessoas certas no momento certo. Conversão de email: de 0,8% actual para 4–5% target. Segmentos: novos, recorrentes, fiéis, dormentes. Cada segmento com sequência diferente.</div><div class="am"><span class="pr md">2027</span></div></div></div>
+      <div class="ai"><div class="an">03</div><div class="ab"><div class="at">Programa de aniversários — 30 dias antes de datas especiais</div><div class="ax">30 dias antes do aniversário de casamento ou nascimento, proposta personalizada de estadia comemorativa. Com 500 hóspedes na base com datas registadas, conversão de 8–12% gera 40–60 reservas incrementais anuais sem custo de aquisição.</div><div class="am"><span class="pr md">Médio Prazo</span></div></div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- REVENUE POR HÓSPEDE -->
+<div class="pg" id="p-rev">
+<div class="dk-section">
+  <div class="pey">F&B · Spa · Experiências · Ancillary Revenue</div>
+  <h2 class="pt" style="color:var(--W)">Revenue <em>por Hóspede</em></h2>
+  <p class="px" style="color:rgba(227,222,207,.44)">TRevPAR — revenue total por quarto disponível, incluindo F&B, Spa e Experiências. O indicador que distingue hotéis de luxo de resorts médios. Target 2031: €600+ vs ~€400 actual estimado.</p>
+  <div style="width:34px;height:1px;background:var(--H2);margin:13px 0"></div>
+</div>
+<div class="dk-section dk" style="padding-top:8px">
+  <div class="kg k4">
+    <div class="kdc"><div class="kl">Rev/Hóspede Rest. Mar</div><div class="kv">€32,43</div><div class="kd">vs Budget €44,46 (−27%)</div></div>
+    <div class="kdc E"><div class="kl">Breakfast Board Mar</div><div class="kv">+10,9%</div><div class="kd">€76.207 vs Budget €68.713 ✓</div></div>
+    <div class="kdc"><div class="kl">ODD &amp; Experiências Mar</div><div class="kv">−55%</div><div class="kd">€7.210 vs Budget €16.008</div></div>
+    <div class="kdc"><div class="kl">Spa &amp; Thalasso Mar</div><div class="kv">−14,1%</div><div class="kd">€42.922 vs Budget €49.980</div></div>
+  </div>
+  <div class="cal D" style="margin-top:14px"><div class="ct">Breakfast Board acima do budget (+10,9%) porque é pré-reservado. É o modelo a replicar.</div><div class="cb">O Breakfast Board supera o budget porque é comunicado e reservado antes da chegada. Os restantes outlets ficam aquém porque dependem de walk-in ou recomendação informal. A mesma lógica — comunicação estruturada no pré-chegada — aplicada aos 6 outlets e às 7 experiências resolve o gap sem alteração de produto.</div></div>
+  <hr class="dk">
+  <div class="sl">Os 6 Outlets — comunicação e revenue</div>
+  <div class="og" style="margin-top:12px">
+
+    <!-- CORAL -->
+    <div class="oc"><div class="os" style="background:#4A3A20"></div><div class="ob">
+      <div class="on2">Coral</div>
+      <div class="osub" style="font-family:var(--fi);font-style:italic">Refined Atlantic Cuisine · Michelin Guide 2026</div>
+      <div class="od">Reconhecido no Guia Michelin Portugal 2026. A simplicidade do sublime — precisão, elegância e refinamento. Qui e sáb, apenas às sextas, sábados e domingos à noite. Vista oceano.</div>
+      <div class="oac">
+        <div class="oa">Qui–Sáb 19h–22h30 · Resort Chic · reserva obrigatória</div>
+        <div class="oa">Chronicle Dinners: transmissão editorial + waitlist pública — gera room nights no fim de semana</div>
+        <div class="oa">Comunicar no T−7 como experiência de fine dining exclusiva com disponibilidade limitada</div>
+        <div class="oa">Argumento de PR: única menção Michelin do hotel — usar em todas as press releases</div>
+      </div>
+    </div></div>
+
+    <!-- RAÍZES -->
+    <div class="oc"><div class="os" style="background:#2A5A30"></div><div class="ob">
+      <div class="on2">Raízes</div>
+      <div class="osub" style="font-family:var(--fi);font-style:italic">Horta da Terra · Fogo e Mesa Partilhada</div>
+      <div class="od">Três pilares: produto local de excelência, cozinha no fogo e mesa partilhada. Cordeiro assado 24h em forno a lenha. Apenas jantares. Seg–Sex, 19h30–22h30.</div>
+      <div class="oac">
+        <div class="oa">Seg–Sex 19h30–22h30 · só jantares · fogo e brasa como conceito central</div>
+        <div class="oa">Tour da horta orgânica → jantar no Raízes: experiência narrativa única no Algarve</div>
+        <div class="oa">SEO: "restaurante fogo algarve", "fine dining algarve local" · blog mensal com ingrediente sazonal</div>
+        <div class="oa">Chronicle Dinners Set 5: Telmo × Alexandre Silva — comunicar com 60 dias antecedência</div>
+      </div>
+    </div></div>
+
+    <!-- GAIVOTAS -->
+    <div class="oc"><div class="os" style="background:#2A5A7A"></div><div class="ob">
+      <div class="on2">Gaivotas</div>
+      <div class="osub" style="font-family:var(--fi);font-style:italic">Cozinha Portuguesa Essencial</div>
+      <div class="od">Peixe de mercado, arroz, caldos de construção lenta. Espírito de tasca refinada — generoso, quente e simples. Dom–Qua à noite. Vista oceano.</div>
+      <div class="oac">
+        <div class="oa">Dom–Qua 19h–22h30 · Resort Chic · vista oceano</div>
+        <div class="oa">60 Years on the Cliffs (23 Mai): jantar dos anos 60 com Lara (neta do fundador) — PR único</div>
+        <div class="oa">Google Ads local €600/mês: "restaurante vista mar algarve" + Meta regional</div>
+        <div class="oa">Reserva obrigatória online: cria escassez e urgência de booking</div>
+      </div>
+    </div></div>
+
+    <!-- A-COSTA -->
+    <div class="oc"><div class="os" style="background:#7A5A30"></div><div class="ob">
+      <div class="on2">A-Costa</div>
+      <div class="osub" style="font-family:var(--fi);font-style:italic">Clássicos Portugueses · Frente ao Mar</div>
+      <div class="od">Os grandes clássicos portugueses a qualquer hora. A melhor razão para revisitar. Bar, almoço e jantar diários. Localização na frente marítima, vista oceano.</div>
+      <div class="oac">
+        <div class="oa">Diário: Bar 10h30–23h · Almoço 12h30–18h · Jantar 18h–22h30</div>
+        <div class="oa">O outlet de maior janela horária — principal alavanca de ancillary revenue diário</div>
+        <div class="oa">Comunicar no T−7 como o destino de almoço e snack com vista oceano</div>
+        <div class="oa">Happy Hour hóspedes: 17h–19h · petiscos portugueses sazonais</div>
+      </div>
+    </div></div>
+
+    <!-- VENTO -->
+    <div class="oc"><div class="os" style="background:#3A6A50"></div><div class="ob">
+      <div class="on2">Vento</div>
+      <div class="osub" style="font-family:var(--fi);font-style:italic">Mediterrânico Orgânico · Junto às Piscinas</div>
+      <div class="od">Cozinha mediterrânica leve e saudável junto às Cascades Pool e ao Spa. Ingredientes locais e sustentáveis. Almoço diário 12h–17h. Ambiente resort, sem vista mar.</div>
+      <div class="oac">
+        <div class="oa">Diário 10h30–18h (bar) · Almoço 12h–17h · Resort Chic</div>
+        <div class="oa">Posicionado como o outlet de wellness: ligação natural ao Spa e ao programa Thalasso</div>
+        <div class="oa">Incluir no T−7 como opção de almoço leve pós-tratamento Spa</div>
+        <div class="oa">Menu de sumos, bowls e opções plant-based como argumento de SEO wellness</div>
+      </div>
+    </div></div>
+
+    <!-- TRATTORIA -->
+    <div class="oc"><div class="os" style="background:#8A3A28"></div><div class="ob">
+      <div class="on2">Trattoria Pantaleone</div>
+      <div class="osub" style="font-family:var(--fi);font-style:italic">Tradição Italiana · Ingredientes Algarvios</div>
+      <div class="od">Tradição italiana com ingredientes algarvios. Ambiente acolhedor e familiar. Qui–Seg à noite. O outlet mais informal — ideal para famílias e estadias longas.</div>
+      <div class="oac">
+        <div class="oa">Qui–Seg 18h30–22h30 · acolhedor e familiar · Resort Chic</div>
+        <div class="oa">Chronicle Dinners Set 7: Ricardo × Stefano Bulla (Mediterrâneo) — comunicar 60 dias antes</div>
+        <div class="oa">Pasta making experience: workshop 90min + jantar · €55/pessoa · máx 10</div>
+        <div class="oa">GMB dedicado "Trattoria Pantaleone Vilalara" para captação de não-hóspedes locais</div>
+      </div>
+    </div></div>
+
+  </div>
+  <hr class="dk">
+  <div class="sl">Spa &amp; Thalasso — produto diferenciador</div>
+  <div class="kg k3" style="margin-top:10px">
+    <div class="cal D"><div class="ct">Thalasso Legacy Programme — Q3 2027</div><div class="cb">Pacotes 3/5/7 noites com protocolo médico validado. €1.200–2.800/pessoa. Primeiro produto de Spa vendido como programa fechado — não à la carte. Ticket 2× acima do leisure standard.</div></div>
+    <div class="cal D"><div class="ct">Spa Day-Pass externo — revenue nos dias de semana</div><div class="cb">Day-pass €120–180: circuito de água + 1 tratamento + almoço nos outlets. Para não-hóspedes. Target: 5–8/dia. Cria pipeline de futuros hóspedes.</div></div>
+    <div class="cal D"><div class="ct">Algarve Earth Ritual — exclusivo e inimitável</div><div class="cb">Argila da Barrocal, sal marinho, azeite algarvio, ervas dos jardins. Denominação própria. €120–180. Não disponível noutro Spa. Activo de PR e diferenciação.</div></div>
+  </div>
+  <hr class="dk">
+  <div class="sl">Chronicle Dinners 2026 — calendário confirmado</div>
+  <div class="tw" style="margin-top:10px"><table class="dktable">
+    <thead><tr><th>Data</th><th>Evento</th><th>Local</th><th>Acção</th></tr></thead>
+    <tbody>
+      <tr><td>23 Mai</td><td>60 Years on the Cliffs</td><td>Gaivotas</td><td>PR + história da família fundadora · comunicar agora</td></tr>
+      <tr><td>17 Jun</td><td>Vilalara × Vila Lisa</td><td>—</td><td>Waitlist pública + Meta Ads local</td></tr>
+      <tr><td>11 Jul</td><td>Coral × Kabuki Under the Pines</td><td>Coral</td><td>Vídeo editorial + Instagram Reels</td></tr>
+      <tr><td>4 Set</td><td>Diogo × Rita Magro (Atlântico)</td><td>Coral</td><td>Press release · jornalistas F&B nacionais</td></tr>
+      <tr><td>5 Set</td><td>Telmo × Alexandre Silva (Fogo)</td><td>Raízes</td><td>Observador / Público · SEO content</td></tr>
+      <tr><td>7 Set</td><td>Ricardo × Stefano Bulla (Mediterrâneo)</td><td>Trattoria</td><td>Crossover PT × IT · media italiana</td></tr>
+      <tr class="go"><td>8 Set</td><td>Festa de Encerramento — Diogo, Telmo, Ricardo + Louis Anjos</td><td>Praça das Rosas</td><td>Evento de PR · trade e media convidados</td></tr>
+    </tbody>
+  </table></div>
+</div>
+</div>
+<!-- MARCA -->
+<div class="pg" id="p-marca">
+<div class="ph" data-bg="Marca">
+  <div class="pey">Posicionamento · Diferenciação · ADR · Certificações</div>
+  <h2 class="pt">Posicionamento <em>&amp; Marca</em></h2>
+  <p class="px">O Vilalara como destino, não apenas como hotel. Diferenciação real vs concorrência. Certificações como alavanca de ADR e distribuição premium.</p>
+  <div class="prl"></div>
+</div>
+<div class="pb">
+  <div class="sl">O que é inimitável no Vilalara</div>
+  <div class="bm">
+    <div class="bc"><div class="bc-label">Localização</div><div class="bc-val">Falésia sobre o Atlântico com 60 anos de história. Não se constrói uma localização — herda-se.</div></div>
+    <div class="bc"><div class="bc-label">Thalassoterapia com água do Atlântico</div><div class="bc-val">Protocolo médico. O único resort do Algarve com thalasso de nível médico-turístico verificável.</div></div>
+    <div class="bc"><div class="bc-label">George Ansley — a narrativa fundadora</div><div class="bc-val">A viagem de barco que descobriu o lugar. Uma origem com nome, história e descendência. Impossível de fabricar.</div></div>
+    <div class="bc"><div class="bc-label">6 Outlets com identidade própria</div><div class="bc-val">Coral, Raízes, Gaivotas, A-Costa, Vento, Trattoria Pantaleone — cada um com conceito e storytelling.</div></div>
+    <div class="bc"><div class="bc-label">Jardins e território integrados</div><div class="bc-val">Horta pedagógica, mel das colmeias, alecrim e flores nos tratamentos Thalasso. O lugar no produto.</div></div>
+    <div class="bc"><div class="bc-label">60 anos em 2026</div><div class="bc-val">Âncora de PR que se usa uma vez. Evento, narrativa, produto, conteúdo — irrepetível após 2026.</div></div>
+  </div>
+  <hr class="rule gold">
+  <div class="sl">Diferenciação vs concorrência directa</div>
+  <div class="tw"><table>
+    <thead><tr><th>Dimensão</th><th>Vilalara</th><th>Vila Vita Parc</th><th>Conrad Algarve</th><th>Pine Cliffs</th></tr></thead>
+    <tbody>
+      <tr><td>Thalassoterapia médica</td><td class="go">✓ Água Atlântico</td><td>Spa standard</td><td>Spa standard</td><td>Spa standard</td></tr>
+      <tr><td>Narrativa fundadora</td><td class="go">George Ansley · 60 anos</td><td>Grupo Amorim</td><td>Conrad (Hilton)</td><td>Annabelle Hotels</td></tr>
+      <tr><td>F&B com identidade</td><td class="go">6 outlets · conceito próprio</td><td>Vila Joya (1★)</td><td>Yakuza + outros</td><td>Múltiplos outlets</td></tr>
+      <tr><td>Falésia + vista 180°</td><td class="go">Única localização</td><td>Praia nível inferior</td><td>Golf resort interior</td><td>Falésia sem Thalasso</td></tr>
+      <tr><td>Independente · família</td><td class="go">ADN único</td><td>Grupo familiar</td><td>Cadeia global Hilton</td><td>Cadeia regional</td></tr>
+    </tbody>
+  </table></div>
+  <hr class="rule gold">
+  <div class="sl">Certificações — distribuição premium e ADR</div>
+  <div class="kg k4">
+    <div class="kc G"><div class="kl">Q4 2026</div><div class="kv" style="font-size:16px">Auditoria</div><div class="kd" style="margin-top:5px">Forbes Travel Guide: auditoria interna · identificar gaps · plano por departamento</div></div>
+    <div class="kc"><div class="kl">2027</div><div class="kv" style="font-size:16px">Candidatura</div><div class="kd" style="margin-top:5px">Dossier formal Forbes · contacto Virtuoso e Amex Travel · press trips temáticas</div></div>
+    <div class="kc G"><div class="kl">2028</div><div class="kv">Forbes ★</div><div class="kd" style="margin-top:5px">ADR +8–15% (benchmark). Amex Centurion 3,5M cartões. Virtuoso preferred.</div></div>
+    <div class="kc G"><div class="kl">2030</div><div class="kv">LHW</div><div class="kd" style="margin-top:5px">Leading Hotels of the World · 400K+ clientes globais · ILTM Cannes · ADR +18–25%</div></div>
+  </div>
+  <div class="ins" style="margin-top:14px"><div class="inh">Vilalara: The Film — 60 anos como activo de PR</div><ul class="inl">
+    <li>Mini-documentário 5–8 minutos: a descoberta de George Ansley, os 60 anos, os chefs dos 6 outlets, o Thalasso, os jardins</li>
+    <li>Produção profissional — não video de marketing. Editorial de lugar e herança.</li>
+    <li>YouTube como plataforma principal, cortado para Reels e Stories</li>
+    <li>PR value esperado: cobertura em FT How to Spend It, Monocle, CNT quando bem executado e promovido</li>
+  </ul></div>
+</div>
+</div>
+
+<!-- SUSTENTABILIDADE -->
+<div class="pg" id="p-sus">
+<div class="dk-section">
+  <div class="pey">Diferenciação Verificável · Valor Premium · Certificações</div>
+  <h2 class="pt" style="color:var(--W)"><em>Sustentabilidade</em></h2>
+  <p class="px" style="color:rgba(227,222,207,.44)">Sustentabilidade como factor de diferenciação verificável e argumento de valor para o cliente premium — não linguagem corporativa genérica. Necessária para Forbes, LHW e para manter relevância no segmento premium europeu pós-2028.</p>
+  <div style="width:34px;height:1px;background:var(--H2);margin:13px 0"></div>
+</div>
+<div class="dk-section dk" style="padding-top:8px">
+  <div class="sg">
+    <div class="sc"><div class="si">🌊</div><div class="st2">Vilalara Ocean Pledge</div><div class="sx2">Por cada reserva directa, €2–3 para conservação da costa algarvia — posidónia, ninhos de tartaruga, limpeza de praias. Parceria auditável. Comunicado no booking flow, email de confirmação e quarto.</div><span class="stag">2026</span></div>
+    <div class="sc"><div class="si">🌿</div><div class="st2">Horta Pedagógica — Farm-to-Table Real</div><div class="sx2">Horta visitável com ingredientes dos 6 outlets. Tour diário com o jardineiro ou sous-chef. Liga sustentabilidade, gastronomia e experiência sensorial.</div><span class="stag">2026</span></div>
+    <div class="sc"><div class="si">🐝</div><div class="st2">Mel Vilalara — Colmeia nos Jardins</div><div class="sx2">Colmeia nos jardins. Mel nos pequenos-almoços, nos tratamentos Thalasso e nos cocktails do Vento. Label própria disponível para compra. Narrativa de produto autentica.</div><span class="stag">2027</span></div>
+    <div class="sc"><div class="si">📋</div><div class="st2">Relatório de Impacto Anual</div><div class="sx2">Publicação editorial premium — não PDF corporativo. 24 páginas. Impacto real documentado, fornecedores locais certificados. Distribuído a parceiros Forbes, Virtuoso e LHW.</div><span class="stag">Anual · 2027+</span></div>
+    <div class="sc"><div class="si">☀️</div><div class="st2">Carbon Neutral 2030</div><div class="sx2">Energia solar, compensação de carbono verificada, cadeia de fornecimento local documentada. Certificação independente. Necessário para LHW e relevância premium europeia pós-2028.</div><span class="stag">Meta 2030</span></div>
+    <div class="sc"><div class="si">🤝</div><div class="st2">Fornecedores Locais Certificados</div><div class="sx2">Programa de certificação: critérios de proximidade e práticas de produção. Lista publicada no site e no menu de cada outlet. Sustentabilidade verificável — não declarada.</div><span class="stag">2027</span></div>
+  </div>
+</div>
+</div>
+
+<!-- FINANCEIRO -->
+<div class="pg" id="p-fin">
+<div class="ph" data-bg="Financeiro">
+  <div class="pey">Revenue · ADR · Canal Direto · Projecções 2026–2031</div>
+  <h2 class="pt">Plano <em>Financeiro</em></h2>
+  <p class="px">Budget 2026 confirmado: €11.941.356 room revenue. Projecções baseadas em dados reais 2024–2025 e lógica de crescimento incremental por canal e mercado.</p>
+  <div class="prl"></div>
+</div>
+<div class="pb">
+  <div class="cal G"><div class="ct">⚠ Target 2026: €11.941.356 — confirmado pelo Vilalara Forecast 2026</div><div class="cb">24.366 rm nts · ADR €490,08. Com OTB €7.207.373 a 4 de Maio, o gap é de €4.733.983 (39,6%). Com pickup de ~725 rn/semana e 7 meses de vendas disponíveis, o target é alcançável com execução precisa nas áreas de gap identificadas: direto, Residences e Agosto.</div></div>
+  <div class="sl">Revenue 2025–2031 — projecção</div>
+  <div class="rc">
+    <div class="rr"><div class="rl">2025 Real</div><div class="rw"><div class="rf" style="width:66%">€10.555.947</div></div></div>
+    <div class="rr tgt"><div class="rl">2026 Budget</div><div class="rw"><div class="rf" style="width:74%">€11.941.356 (+13,1%)</div></div></div>
+    <div class="rr"><div class="rl">2027 Target</div><div class="rw"><div class="rf" style="width:80%">€12.5–13M</div></div></div>
+    <div class="rr"><div class="rl">2028 Target</div><div class="rw"><div class="rf" style="width:87%">€14–14.5M</div></div></div>
+    <div class="rr"><div class="rl">2029 Target</div><div class="rw"><div class="rf" style="width:94%">€15–15.5M</div></div></div>
+    <div class="rr tgt"><div class="rl">2031 Meta</div><div class="rw"><div class="rf" style="width:100%">€16M+</div></div></div>
+  </div>
+  <hr class="rule gold">
+  <div class="tw"><table>
+    <thead><tr><th>Ano</th><th>Revenue</th><th>ADR</th><th>Rm Nts</th><th>% Direto</th><th>ADR Direto</th><th>ROAS Ads</th></tr></thead>
+    <tbody>
+      <tr class="bo"><td>2025 Real</td><td>€10.555.947</td><td>€491,13</td><td>21.493</td><td>61,5%</td><td>€528,51</td><td>22,7×</td></tr>
+      <tr class="rd"><td>2026 Budget</td><td>€11.941.356</td><td>€490,08</td><td>24.366</td><td>62,8%</td><td>€533,09</td><td>25×</td></tr>
+      <tr><td>2027</td><td>€12.5–13M</td><td>€510+</td><td>~22.500</td><td>63%</td><td>€545+</td><td>27×</td></tr>
+      <tr><td>2028</td><td>€14–14.5M</td><td>€545+</td><td>~23.500</td><td>63%</td><td>€580+</td><td>30×</td></tr>
+      <tr><td>2029</td><td>€15–15.5M</td><td>€595+</td><td>~24.000</td><td>65%</td><td>€620+</td><td>32×</td></tr>
+      <tr class="go"><td>2031 Meta</td><td>€16M+</td><td>€680+</td><td>~24.000</td><td>65%</td><td>€700+</td><td>35×</td></tr>
+    </tbody>
+  </table></div>
+  <hr class="rule gold">
+  <div class="sl">Revenue mix 2025 → 2031</div>
+  <div class="tw"><table>
+    <thead><tr><th>Fonte</th><th>2025 Est.</th><th>% Total</th><th>2027</th><th>2031</th><th>Alavanca</th></tr></thead>
+    <tbody>
+      <tr class="bo"><td>Room Revenue Hotel</td><td>€8.168K</td><td>77,4%</td><td>€9.5M</td><td>€12M</td><td>ADR + Ocupação + RevMgmt</td></tr>
+      <tr class="go"><td>Residences Azora</td><td>€1.639K</td><td>15,5%</td><td>€1.9M</td><td>€2.8M</td><td>Volume + campanha dedicada</td></tr>
+      <tr><td>F&B (6 outlets)</td><td>~€1.800K</td><td>17,1%</td><td>€2.2M</td><td>€3M</td><td>Externos + Chronicle Dinners</td></tr>
+      <tr><td>Spa &amp; Thalasso</td><td>~€550K</td><td>5,2%</td><td>€750K</td><td>€1.2M</td><td>Thalasso Legacy + day-pass</td></tr>
+      <tr><td>ODD &amp; Experiências</td><td>~€100K</td><td>0,9%</td><td>€200K</td><td>€600K</td><td>Comunicação pré-chegada</td></tr>
+      <tr><td>MICE &amp; Grupos</td><td>~€22K</td><td>0,2%</td><td>€300K</td><td>€800K</td><td>Produto formalizado · shoulder</td></tr>
+      <tr><td>Weddings (novo)</td><td>—</td><td>—</td><td>—</td><td>€700K</td><td>Launch 2028 · shoulder Oct–Nov</td></tr>
+    </tbody>
+  </table></div>
+</div>
+</div>
+
+<!-- KPIS -->
+<div class="pg" id="p-kpi">
+<div class="dk-section">
+  <div class="pey">Métricas · Targets · Responsáveis · Frequência</div>
+  <h2 class="pt" style="color:var(--W)">KPIs <em>&amp; Performance</em></h2>
+  <p class="px" style="color:rgba(227,222,207,.44)">Estrutura operacional clara. Cada métrica com número, responsável e frequência de revisão. Sem ambiguidade.</p>
+  <div style="width:34px;height:1px;background:var(--H2);margin:13px 0"></div>
+</div>
+<div class="dk-section dk" style="padding-top:8px">
+  <div class="sl">KPIs de Marketing &amp; Digital</div>
+  <div class="tw" style="margin-top:10px"><table class="dktable">
+    <thead><tr><th>KPI</th><th>2025 Real</th><th>2026 Budget</th><th>2027</th><th>2028</th><th>2031</th><th>Freq.</th></tr></thead>
+    <tbody>
+      <tr class="go"><td>ROAS Paid Media</td><td>22,7×</td><td>25×</td><td>27×</td><td>30×</td><td>35×</td><td>Semanal</td></tr>
+      <tr><td>CPA EUA</td><td>~€55</td><td>&lt;€55</td><td>&lt;€50</td><td>&lt;€48</td><td>&lt;€45</td><td>Mensal</td></tr>
+      <tr><td>CPA UK</td><td>~€161</td><td>&lt;€150</td><td>&lt;€130</td><td>&lt;€110</td><td>&lt;€90</td><td>Mensal</td></tr>
+      <tr class="rd"><td>CPA Portugal</td><td>~€388</td><td>Brand only</td><td>Brand only</td><td>Brand only</td><td>Brand only</td><td>Trimestral</td></tr>
+      <tr><td>Conv. Booking Engine</td><td>2,56%</td><td>3,5%+</td><td>4%+</td><td>4,5%</td><td>5%</td><td>Semanal</td></tr>
+      <tr><td>Abandono checkout</td><td>81%</td><td>&lt;70%</td><td>&lt;60%</td><td>&lt;55%</td><td>&lt;45%</td><td>Semanal</td></tr>
+      <tr><td>LCP Booking Engine</td><td>4,1s</td><td>&lt;2,5s</td><td>&lt;2s</td><td>&lt;2s</td><td>&lt;1,8s</td><td>Mensal</td></tr>
+      <tr><td>% Canal Direto</td><td>61,5%</td><td>62,8%</td><td>63%</td><td>63%</td><td>65%</td><td>Mensal</td></tr>
+      <tr><td>ADR Canal Direto</td><td>€528,51</td><td>€533,09</td><td>€545+</td><td>€580+</td><td>€700+</td><td>Semanal</td></tr>
+    </tbody>
+  </table></div>
+  <div class="sl" style="margin-top:24px">KPIs de Revenue &amp; Ocupação</div>
+  <div class="tw" style="margin-top:10px"><table class="dktable">
+    <thead><tr><th>KPI</th><th>2025 Real</th><th>2026 Budget</th><th>2027</th><th>2031</th><th>Freq.</th></tr></thead>
+    <tbody>
+      <tr class="go"><td>Revenue Total</td><td>€10.555.947</td><td>€11.941.356</td><td>€12.5–13M</td><td>€16M+</td><td>Semanal</td></tr>
+      <tr><td>ADR médio</td><td>€491,13</td><td>€490,08</td><td>€510+</td><td>€680+</td><td>Semanal</td></tr>
+      <tr><td>RevPAR</td><td>~€330</td><td>~€340</td><td>€375+</td><td>€500+</td><td>Semanal</td></tr>
+      <tr><td>TRevPAR</td><td>~€400</td><td>€440+</td><td>€460+</td><td>€600+</td><td>Mensal</td></tr>
+      <tr><td>Occ. mínima (pior mês)</td><td>~38%</td><td>45%+</td><td>55%+</td><td>70%+</td><td>Diário</td></tr>
+      <tr><td>% Hóspedes Recorrentes</td><td>~15%</td><td>18%+</td><td>22%</td><td>30%+</td><td>Trimestral</td></tr>
+      <tr><td>NPS Global</td><td>—</td><td>72+</td><td>76+</td><td>85+</td><td>Mensal</td></tr>
+      <tr><td>Rev/Hóspede Rest.</td><td>~€35</td><td>€44,46</td><td>€48+</td><td>€55+</td><td>Mensal</td></tr>
+      <tr><td>Occ. vs Comp Set (STR)</td><td>5.º de 5</td><td>5.º de 5</td><td>4.º de 5</td><td>2.º de 5</td><td>Mensal</td></tr>
+    </tbody>
+  </table></div>
+  <div class="dins" style="margin-top:16px"><div class="inh">Cadência de revisão</div><ul class="inl">
+    <li>Daily Revenue Huddle (15 min) — GM + Revenue + FO: occ actual, ADR do dia, OTB semana, decisão de pricing</li>
+    <li>Weekly Marketing Review (45 min) — GM + Marketing: ROAS, pacing budget, conv. booking engine, OTB por canal, Google Ads performance</li>
+    <li>Monthly Full Review (90 min) — Todas as chefias: Revenue vs Budget por departamento, TRevPAR, Rev/hóspede por outlet, NPS, headcount</li>
+    <li>Quarterly Strategic Review (3h) — Direcção + Marketing: KPIs anuais, mercados, posicionamento, investimento próximo trimestre</li>
+  </ul></div>
+</div>
+</div>
+
+</div><!-- #app -->
 
 <script>
-const evts=[
-  {date:new Date('2026-05-23'),name:'60 Years on the Cliffs'},
-  {date:new Date('2026-06-17'),name:'Vilalara \u00d7 Vila Lisa'},
-  {date:new Date('2026-06-27'),name:'Santos Populares at Vilalara'},
-  {date:new Date('2026-07-11'),name:'Coral \u00d7 Kabuki Under the Pines'},
-  {date:new Date('2026-07-22'),name:'White Night by the Cliffs'},
-  {date:new Date('2026-08-12'),name:'The Last Eclipse of Our Lifetime'},
-  {date:new Date('2026-09-04'),name:'Coral Atlantic Encounters'},
-  {date:new Date('2026-09-21'),name:'Thalasso Therapy Legacy Week'},
-  {date:new Date('2026-10-08'),name:'Legacy Celebration'},
-];
-function tick(){
-  const now=new Date();
-  const next=evts.find(e=>e.date>now)||evts[evts.length-1];
-  const diff=next.date-now;
-  if(diff<=0){tick();return;}
-  document.getElementById('cd-name').textContent=next.name;
-  document.getElementById('cd-d').textContent=String(Math.floor(diff/86400000)).padStart(2,'0');
-  document.getElementById('cd-h').textContent=String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
-  document.getElementById('cd-m').textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-  document.getElementById('cd-s').textContent=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+/* ─── LOADER ─────────────────────────────────────────────────────────────── */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('ld').classList.add('out');
+    setTimeout(() => document.getElementById('ld').style.display = 'none', 700);
+    animateVisible();
+  }, 2200);
+});
+
+/* ─── NAV SCROLL BEHAVIOUR ───────────────────────────────────────────────── */
+const nav = document.getElementById('nav');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (y > 20) {
+    nav.classList.add('solid');
+  } else {
+    nav.classList.remove('solid');
+  }
+  lastScroll = y;
+}, { passive: true });
+
+/* ─── HAMBURGER ──────────────────────────────────────────────────────────── */
+const hamBtn = document.getElementById('hamBtn');
+const drawer = document.getElementById('drawer');
+hamBtn.addEventListener('click', () => {
+  const open = hamBtn.classList.toggle('open');
+  drawer.classList.toggle('open', open);
+});
+
+/* ─── PAGE NAVIGATION (data-page) ─────────────────────────────────────────── */
+function showPage(id, btn) {
+  document.querySelectorAll('.pg').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('[data-page]').forEach(b => b.classList.remove('on'));
+  const page = document.getElementById('p-' + id);
+  if (page) page.classList.add('on');
+  document.querySelectorAll(`[data-page="${id}"]`).forEach(b => b.classList.add('on'));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Close drawer on mobile
+  hamBtn.classList.remove('open');
+  drawer.classList.remove('open');
+  setTimeout(animateVisible, 120);
 }
-tick();setInterval(tick,1000);
+
+document.querySelectorAll('[data-page]').forEach(btn => {
+  btn.addEventListener('click', () => showPage(btn.dataset.page, btn));
+});
+
+/* ─── TABS (data-tab) ────────────────────────────────────────────────────── */
+document.querySelectorAll('[data-tab]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.dataset.tab;
+    const tabsEl = btn.closest('.tabs');
+    const parent = tabsEl ? tabsEl.parentElement : null;
+    if (!parent) return;
+    parent.querySelectorAll('.tp').forEach(p => p.classList.remove('on'));
+    tabsEl.querySelectorAll('[data-tab]').forEach(b => b.classList.remove('on'));
+    const panel = document.getElementById(id);
+    if (panel) panel.classList.add('on');
+    btn.classList.add('on');
+    setTimeout(animateVisible, 80);
+  });
+});
+
+/* ─── YEAR PHASES (data-yr) ─────────────────────────────────────────────── */
+document.querySelectorAll('[data-yr]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.dataset.yr;
+    document.querySelectorAll('.yc').forEach(e => e.classList.remove('on'));
+    document.querySelectorAll('[data-yr]').forEach(b => b.classList.remove('on'));
+    const el = document.getElementById(id);
+    if (el) el.classList.add('on');
+    btn.classList.add('on');
+  });
+});
+
+/* ─── ANIMATE BARS ───────────────────────────────────────────────────────── */
+function animBars() {
+  document.querySelectorAll('.rf').forEach(b => {
+    const w = b.style.width;
+    if (!w || w === '0%') return;
+    b.style.transition = 'none';
+    b.style.width = '0';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      b.style.transition = 'width 1.4s cubic-bezier(.25,.46,.45,.94)';
+      b.style.width = w;
+    }));
+  });
+}
+
+/* ─── FADE-IN ON VISIBLE ─────────────────────────────────────────────────── */
+function animateVisible() {
+  animBars();
+  document.querySelectorAll('.kc,.kdc,.cal,.ai,.ti,.oc,.sc,.bc,.gi').forEach((el, i) => {
+    if (el.dataset.animated) return;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(8px)';
+    el.style.transition = `opacity .3s ease ${(i % 8) * 0.045}s, transform .3s ease ${(i % 8) * 0.045}s`;
+    setTimeout(() => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+      el.dataset.animated = '1';
+    }, 40 + (i % 8) * 45);
+  });
+}
 </script>
 </body>
 </html>
